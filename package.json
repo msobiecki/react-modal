@@ -1,0 +1,94 @@
+{
+  "name": "react-modal",
+  "version": "0.1.0",
+  "private": false,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/prop-types": "^15.7.3",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.8",
+    "@types/styled-components": "^5.1.2",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1",
+    "styled-components": "^5.1.1",
+    "typescript": "~3.7.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "publish:npm": "cross-env NODE_ENV=production && rimraf dist && mkdir dist && npx babel src/Modal --out-dir dist --copy-files",
+    "docs": "react-scripts build && rm -rf docs && mv build docs",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "description": "A beautiful, materialized and flexible React Modal component",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "babel": {
+    "presets": [
+      "@babel/react"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-class-properties",
+        {
+          "loose": true
+        }
+      ]
+    ]
+  },
+  "devDependencies": {
+    "babel-preset-react-app": "^9.1.2",
+    "cross-env": "^7.0.2",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5",
+    "rimraf": "^3.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaliMike/react-modal.git"
+  },
+  "author": "Michał Sobiecki <kontakt@codeshaker.pl>",
+  "license": "MIT",
+  "keywords": [
+    "modal",
+    "react-modal"
+  ],
+  "bugs": {
+    "url": "https://github.com/SaliMike/react-modal/issues"
+  },
+  "homepage": "https://salimike.github.io/react-modal/",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
+  }
+}
