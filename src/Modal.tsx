@@ -3,6 +3,7 @@ import React, {
   useEffect,
   forwardRef,
   useImperativeHandle,
+  useRef,
 } from 'react';
 import PropTypes, { InferProps } from 'prop-types';
 
@@ -13,7 +14,7 @@ import {
 
 import {
   Wrapper,
-  Holder,
+  Overlay,
   Panel,
   PanelInner,
   Close,
@@ -35,6 +36,14 @@ const modalPropTypes = {
   options: PropTypes.shape({
     openingDuration: PropTypes.number,
     closingDuration: PropTypes.number,
+    zIndex: PropTypes.number,
+    isOverlay: PropTypes.bool,
+    overlayPadding: PropTypes.string,
+    overlayBackground: PropTypes.string,
+    panelBorderRadius: PropTypes.string,
+    panelBorder: PropTypes.string,
+    panelBackground: PropTypes.string,
+    panelBoxShadow: PropTypes.string,
   }),
   onOpenStart: PropTypes.func,
   onOpenEnd: PropTypes.func,
@@ -46,6 +55,14 @@ const modalDefaultProps = {
   options: {
     openingDuration: 200,
     closingDuration: 200,
+    zIndex: 9999,
+    isOverlay: false,
+    overlayPadding: 'initial',
+    overlayBackground: 'rgba(0,0,0,.25)',
+    panelBorderRadius: 'initial',
+    panelBorder: 'none',
+    panelBackground: 'rgba(255,255,255,1)',
+    panelBoxShadow: 'none',
   },
   onOpenStart: () => {},
   onOpenEnd: () => {},
@@ -68,6 +85,7 @@ const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
     { children, options, onOpenStart, onOpenEnd, onCloseStart, onCloseEnd },
     forwardedRef
   ) => {
+    const panelRef = useRef<HTMLDivElement>(null);
     const [modalState, modalDispatch] = useReducer(
       modalReducer,
       Object.assign({}, modalInitialValues, options)
@@ -87,7 +105,20 @@ const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
     };
 
     const closeModal = () => {
-      if (modalState.isOpened) modalDispatch({ type: 'CLOSE_START' });
+      if (modalState.isOpening || modalState.isOpened)
+        modalDispatch({ type: 'CLOSE_START' });
+    };
+
+    const handleClickDocumentEventListener = (event: MouseEvent) => {
+      if (
+        !(
+          panelRef &&
+          panelRef.current &&
+          panelRef.current.contains(event.target as Element)
+        )
+      ) {
+        closeModal();
+      }
     };
 
     useEffect(() => {
@@ -129,36 +160,64 @@ const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [modalState.isClosed]);
 
+    useEffect(() => {
+      document.addEventListener('click', handleClickDocumentEventListener);
+      return () => {
+        document.removeEventListener('click', handleClickDocumentEventListener);
+      };
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [modalState.isOpening, modalState.isOpened]);
+
     useImperativeHandle(forwardedRef, () => ({
       openModal: () => openModal(),
       closeModal: () => closeModal(),
     }));
 
+    const renderPanel = () => {
+      return (
+        <Panel
+          ref={panelRef}
+          borderRadius={modalState.panelBorderRadius}
+          border={modalState.panelBorder}
+          background={modalState.panelBackground}
+          boxShadow={modalState.panelBoxShadow}
+        >
+          {/* <Close>
+      <CloseIcon></CloseIcon>
+    </Close> */}
+          <PanelInner>{children}</PanelInner>
+        </Panel>
+      );
+    };
+
     return (
       <>
         {!modalState.isClosed ? (
-          <Wrapper>
-            <Holder
-              isVisible={
-                modalState.isOpening ||
-                modalState.isOpened ||
-                modalState.isClosing
-                  ? true
-                  : false
-              }
-              isOpening={modalState.isOpening ? true : false}
-              isClosing={modalState.isClosing ? true : false}
-              background={'rgba(0,0,0,.25)'}
-              openingDuration={modalState.openingDuration}
-              closingDuration={modalState.closingDuration}
-            >
-              <Panel>
-                {/* <Close>
-                  <CloseIcon></CloseIcon>
-                </Close> */}
-                <PanelInner>{children}</PanelInner>
-              </Panel>
-            </Holder>
+          <Wrapper
+            isOverlay={modalState.isOverlay ? true : false}
+            zIndex={modalState.zIndex}
+          >
+            {modalState.isOverlay ? (
+              <Overlay
+                isVisible={
+                  modalState.isOpening ||
+                  modalState.isOpened ||
+                  modalState.isClosing
+                    ? true
+                    : false
+                }
+                isOpening={modalState.isOpening ? true : false}
+                isClosing={modalState.isClosing ? true : false}
+                padding={modalState.overlayPadding}
+                background={modalState.overlayBackground}
+                openingDuration={modalState.openingDuration}
+                closingDuration={modalState.closingDuration}
+              >
+                {renderPanel()}
+              </Overlay>
+            ) : (
+              <>{renderPanel()}</>
+            )}
           </Wrapper>
         ) : (
           ''

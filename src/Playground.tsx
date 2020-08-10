@@ -10,8 +10,6 @@ type ModalRefType = {
 const Playground = () => {
   const modalRef = useRef<ModalRefType>(null);
 
-  console.log(modalRef);
-
   return (
     <>
       <button
@@ -33,6 +31,9 @@ const Playground = () => {
         options={{
           openingDuration: 5000,
           closingDuration: 3000,
+          zIndex: 100,
+          isOverlay: true,
+          overlayBackground: 'rgba(133,133,233,0.5)',
         }}
         onOpenStart={() => {
           console.log('OPEN_MODAL_START');

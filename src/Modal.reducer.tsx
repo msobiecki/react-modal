@@ -1,6 +1,14 @@
 type State = {
   openingDuration: number;
   closingDuration: number;
+  zIndex: number;
+  isOverlay: boolean;
+  overlayPadding: string;
+  overlayBackground: string;
+  panelBorderRadius: string;
+  panelBorder: string;
+  panelBackground: string;
+  panelBoxShadow: string;
   isOpening: boolean;
   isOpened: boolean;
   isClosing: boolean;
@@ -22,6 +30,14 @@ type Action = {
 const initialValues = {
   openingDuration: 200,
   closingDuration: 200,
+  zIndex: 9999,
+  isOverlay: false,
+  overlayPadding: 'initial',
+  overlayBackground: 'rgba(0,0,0,.25)',
+  panelBorderRadius: 'initial',
+  panelBorder: 'none',
+  panelBackground: 'rgba(255,255,255,1)',
+  panelBoxShadow: 'none',
   isOpening: false,
   isOpened: false,
   isClosing: false,
