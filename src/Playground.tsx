@@ -30,8 +30,10 @@ const Playground = () => {
       </button>
       <Modal
         ref={modalRef}
-        openingDuration={1000}
-        closingDuration={1000}
+        options={{
+          openingDuration: 5000,
+          closingDuration: 3000,
+        }}
         onOpenStart={() => {
           console.log('OPEN_MODAL_START');
         }}

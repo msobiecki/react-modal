@@ -32,8 +32,10 @@ type InferPropType<
 
 const modalPropTypes = {
   children: PropTypes.node,
-  openingDuration: PropTypes.number,
-  closingDuration: PropTypes.number,
+  options: PropTypes.shape({
+    openingDuration: PropTypes.number,
+    closingDuration: PropTypes.number,
+  }),
   onOpenStart: PropTypes.func,
   onOpenEnd: PropTypes.func,
   onCloseStart: PropTypes.func,
@@ -41,8 +43,10 @@ const modalPropTypes = {
 };
 
 const modalDefaultProps = {
-  openingDuration: 200,
-  closingDuration: 200,
+  options: {
+    openingDuration: 200,
+    closingDuration: 200,
+  },
   onOpenStart: () => {},
   onOpenEnd: () => {},
   onCloseStart: () => {},
@@ -61,23 +65,12 @@ type ForwardedRefType = {
 
 const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
   (
-    {
-      children,
-      openingDuration,
-      closingDuration,
-      onOpenStart,
-      onOpenEnd,
-      onCloseStart,
-      onCloseEnd,
-    },
+    { children, options, onOpenStart, onOpenEnd, onCloseStart, onCloseEnd },
     forwardedRef
   ) => {
     const [modalState, modalDispatch] = useReducer(
       modalReducer,
-      Object.assign({}, modalInitialValues, {
-        openingDuration,
-        closingDuration,
-      })
+      Object.assign({}, modalInitialValues, options)
     );
 
     const handleActionOnOpenStart = () =>
@@ -117,7 +110,6 @@ const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
     }, [modalState.isOpened]);
 
     useEffect(() => {
-      console.log('closing');
       let timeout: number;
       if (modalState.isClosing) {
         handleActionOnCloseStart();
@@ -146,11 +138,24 @@ const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
       <>
         {!modalState.isClosed ? (
           <Wrapper>
-            <Holder>
+            <Holder
+              isVisible={
+                modalState.isOpening ||
+                modalState.isOpened ||
+                modalState.isClosing
+                  ? true
+                  : false
+              }
+              isOpening={modalState.isOpening ? true : false}
+              isClosing={modalState.isClosing ? true : false}
+              background={'rgba(0,0,0,.25)'}
+              openingDuration={modalState.openingDuration}
+              closingDuration={modalState.closingDuration}
+            >
               <Panel>
-                <Close>
+                {/* <Close>
                   <CloseIcon></CloseIcon>
-                </Close>
+                </Close> */}
                 <PanelInner>{children}</PanelInner>
               </Panel>
             </Holder>
