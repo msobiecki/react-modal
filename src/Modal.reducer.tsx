@@ -3,6 +3,7 @@ type State = {
   closingDuration: number;
   zIndex: number;
   isOverlay: boolean;
+  isOverlayClosing: boolean;
   overlayPadding: string;
   overlayBackground: string;
   panelBorderRadius: string;
@@ -32,6 +33,7 @@ const initialValues = {
   closingDuration: 200,
   zIndex: 9999,
   isOverlay: false,
+  isOverlayClosing: true,
   overlayPadding: 'initial',
   overlayBackground: 'rgba(0,0,0,.25)',
   panelBorderRadius: 'initial',

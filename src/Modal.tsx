@@ -38,6 +38,7 @@ const modalPropTypes = {
     closingDuration: PropTypes.number,
     zIndex: PropTypes.number,
     isOverlay: PropTypes.bool,
+    isOverlayClosing: PropTypes.bool,
     overlayPadding: PropTypes.string,
     overlayBackground: PropTypes.string,
     panelBorderRadius: PropTypes.string,
@@ -57,6 +58,7 @@ const modalDefaultProps = {
     closingDuration: 200,
     zIndex: 9999,
     isOverlay: false,
+    isOverlayClosing: true,
     overlayPadding: 'initial',
     overlayBackground: 'rgba(0,0,0,.25)',
     panelBorderRadius: 'initial',
@@ -161,9 +163,14 @@ const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
     }, [modalState.isClosed]);
 
     useEffect(() => {
-      document.addEventListener('click', handleClickDocumentEventListener);
+      if (modalState.isOverlay && modalState.isOverlayClosing)
+        document.addEventListener('click', handleClickDocumentEventListener);
       return () => {
-        document.removeEventListener('click', handleClickDocumentEventListener);
+        if (modalState.isOverlay && modalState.isOverlayClosing)
+          document.removeEventListener(
+            'click',
+            handleClickDocumentEventListener
+          );
       };
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [modalState.isOpening, modalState.isOpened]);
