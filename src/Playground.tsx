@@ -49,7 +49,42 @@ const Playground = () => {
           console.log('CLOSE_MODAL_END');
         }}
       >
-        test
+        <div style={{ maxWidth: '640px' }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+          pretium orci eu semper blandit. Fusce bibendum odio eu dolor
+          elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris
+          lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis
+          id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec
+          orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus
+          enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus
+          orci luctus et ultrices posuere cubilia curae; Pellentesque varius
+          eget enim at varius. Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce
+          bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed
+          feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam
+          ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim
+          iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum.
+          Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum
+          primis in faucibus orci luctus et ultrices posuere cubilia curae;
+          Pellentesque varius eget enim at varius. Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Vestibulum pretium orci eu semper
+          blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus
+          mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus
+          ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus
+          libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium
+          quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem.
+          Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+          posuere cubilia curae; Pellentesque varius eget enim at varius. Lorem
+          ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium
+          orci eu semper blandit. Fusce bibendum odio eu dolor elementum,
+          accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis
+          semper. Phasellus ut libero quis quam ornare tincidunt quis id diam.
+          Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci
+          ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim,
+          eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci
+          luctus et ultrices posuere cubilia curae; Pellentesque varius eget
+          enim at varius.
+        </div>
       </Modal>
     </>
   );

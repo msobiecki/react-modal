@@ -10,6 +10,7 @@ export const Wrapper = styled.div<WrapperPropsType>`
   justify-content: center;
   position: fixed;
   z-index: ${(props) => props.zIndex};
+  height: 100%;
 
   ${(props) =>
     !props.isOverlay &&
@@ -17,6 +18,7 @@ export const Wrapper = styled.div<WrapperPropsType>`
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      overflow: auto;
     `}
 
   ${(props) =>
@@ -26,6 +28,7 @@ export const Wrapper = styled.div<WrapperPropsType>`
       right: 0;
       bottom: 0;
       left: 0;
+      width: 100%;
     `}
 `;
 
