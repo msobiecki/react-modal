@@ -33,7 +33,7 @@ const Playground = () => {
           closingDuration: 3000,
           zIndex: 100,
           isOverlay: true,
-          isOverlayClosing: false,
+          isOverlayClosing: true,
           overlayBackground: 'rgba(133,133,233,0.5)',
         }}
         onOpenStart={() => {

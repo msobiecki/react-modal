@@ -26,7 +26,9 @@
     "publish:npm": "cross-env NODE_ENV=production && rimraf dist && mkdir dist && npx babel src/Modal --out-dir dist --copy-files",
     "docs": "react-scripts build && rm -rf docs && mv build docs",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -60,6 +62,11 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-links": "^5.3.19",
+    "@storybook/addons": "^5.3.19",
+    "@storybook/preset-create-react-app": "^3.1.4",
+    "@storybook/react": "^5.3.19",
     "babel-preset-react-app": "^9.1.2",
     "cross-env": "^7.0.2",
     "husky": "^4.2.5",
