@@ -103,30 +103,30 @@ var Modal = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, forwardedRef) {
       modalDispatch = _useReducer2[1];
 
   var handleActionOnOpenStart = function handleActionOnOpenStart() {
-    return typeof onOpenStart === "function" && onOpenStart();
+    return typeof onOpenStart === 'function' && onOpenStart();
   };
 
   var handleActionOnOpenEnd = function handleActionOnOpenEnd() {
-    return typeof onOpenEnd === "function" && onOpenEnd();
+    return typeof onOpenEnd === 'function' && onOpenEnd();
   };
 
   var handleActionOnCloseStart = function handleActionOnCloseStart() {
-    return typeof onCloseStart === "function" && onCloseStart();
+    return typeof onCloseStart === 'function' && onCloseStart();
   };
 
   var handleActionOnCloseEnd = function handleActionOnCloseEnd() {
-    return typeof onCloseEnd === "function" && onCloseEnd();
+    return typeof onCloseEnd === 'function' && onCloseEnd();
   };
 
   var _openModal = function openModal() {
     if (modalState.isClosed) modalDispatch({
-      type: "OPEN_START"
+      type: 'OPEN_START'
     });
   };
 
   var _closeModal = function closeModal() {
     if (modalState.isOpened) modalDispatch({
-      type: "CLOSE_START"
+      type: 'CLOSE_START'
     });
   };
 
@@ -143,7 +143,7 @@ var Modal = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, forwardedRef) {
       handleActionOnOpenStart();
       timeout = setTimeout(function () {
         modalDispatch({
-          type: "OPEN_END"
+          type: 'OPEN_END'
         });
       }, modalState.openingDuration);
     }
@@ -162,7 +162,7 @@ var Modal = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, forwardedRef) {
       handleActionOnCloseStart();
       timeout = setTimeout(function () {
         modalDispatch({
-          type: "CLOSE_END"
+          type: 'CLOSE_END'
         });
       }, modalState.closingDuration);
     }
@@ -175,9 +175,9 @@ var Modal = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, forwardedRef) {
     if (modalState.isClosed) handleActionOnCloseEnd(); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modalState.isClosed]);
   (0, _react.useEffect)(function () {
-    if (modalState.isOverlay && modalState.isOverlayClosing) document.addEventListener("click", handleClickDocumentEventListener);
+    if (modalState.isOverlay && modalState.isOverlayClosing) document.addEventListener('click', handleClickDocumentEventListener);
     return function () {
-      if (modalState.isOverlay && modalState.isOverlayClosing) document.removeEventListener("click", handleClickDocumentEventListener);
+      if (modalState.isOverlay && modalState.isOverlayClosing) document.removeEventListener('click', handleClickDocumentEventListener);
     }; // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modalState.isOpening, modalState.isOpened]);
   (0, _react.useImperativeHandle)(forwardedRef, function () {
@@ -229,7 +229,7 @@ var Modal = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, forwardedRef) {
     closingDuration: modalState.closingDuration,
     padding: modalState.overlayPadding,
     background: modalState.overlayBackground
-  }, renderPanel()) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, renderPanel())) : "");
+  }, renderPanel()) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, renderPanel())) : '');
 });
 exports.Modal = Modal;
 Modal.defaultProps = modalDefaultProps;

@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { css, keyframes } from 'styled-components';
 const fadeIn = {
   from: {
     opacity: 0
@@ -23,7 +23,7 @@ const zoomIn = {
     opacity: 0,
     transform: scale3d(0.3, 0.3, 0.3)
   },
-  "50%": {
+  '50%': {
     opacity: 1
   }
 };
@@ -31,7 +31,7 @@ const zoomOut = {
   from: {
     opacity: 1
   },
-  "50%": {
+  '50%': {
     opacity: 0,
     transform: scale3d(0.3, 0.3, 0.3)
   },

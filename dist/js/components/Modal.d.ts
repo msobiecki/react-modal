@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes, { InferProps } from "prop-types";
+import React from 'react';
+import PropTypes, { InferProps } from 'prop-types';
 declare type InferPropType<PropTypes, DefaultProps = {}, Props = InferProps<PropTypes>> = {
     [Key in keyof Props]: Key extends keyof DefaultProps ? Props[Key] | DefaultProps[Key] : Props[Key];
 };

@@ -94,23 +94,23 @@
     const panelRef = (0, _react.useRef)(null);
     const [modalState, modalDispatch] = (0, _react.useReducer)(_Modal.reducer, Object.assign({}, _Modal.initialValues, options));
 
-    const handleActionOnOpenStart = () => typeof onOpenStart === "function" && onOpenStart();
+    const handleActionOnOpenStart = () => typeof onOpenStart === 'function' && onOpenStart();
 
-    const handleActionOnOpenEnd = () => typeof onOpenEnd === "function" && onOpenEnd();
+    const handleActionOnOpenEnd = () => typeof onOpenEnd === 'function' && onOpenEnd();
 
-    const handleActionOnCloseStart = () => typeof onCloseStart === "function" && onCloseStart();
+    const handleActionOnCloseStart = () => typeof onCloseStart === 'function' && onCloseStart();
 
-    const handleActionOnCloseEnd = () => typeof onCloseEnd === "function" && onCloseEnd();
+    const handleActionOnCloseEnd = () => typeof onCloseEnd === 'function' && onCloseEnd();
 
     const openModal = () => {
       if (modalState.isClosed) modalDispatch({
-        type: "OPEN_START"
+        type: 'OPEN_START'
       });
     };
 
     const closeModal = () => {
       if (modalState.isOpened) modalDispatch({
-        type: "CLOSE_START"
+        type: 'CLOSE_START'
       });
     };
 
@@ -127,7 +127,7 @@
         handleActionOnOpenStart();
         timeout = setTimeout(() => {
           modalDispatch({
-            type: "OPEN_END"
+            type: 'OPEN_END'
           });
         }, modalState.openingDuration);
       }
@@ -146,7 +146,7 @@
         handleActionOnCloseStart();
         timeout = setTimeout(() => {
           modalDispatch({
-            type: "CLOSE_END"
+            type: 'CLOSE_END'
           });
         }, modalState.closingDuration);
       }
@@ -159,9 +159,9 @@
       if (modalState.isClosed) handleActionOnCloseEnd(); // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [modalState.isClosed]);
     (0, _react.useEffect)(() => {
-      if (modalState.isOverlay && modalState.isOverlayClosing) document.addEventListener("click", handleClickDocumentEventListener);
+      if (modalState.isOverlay && modalState.isOverlayClosing) document.addEventListener('click', handleClickDocumentEventListener);
       return () => {
-        if (modalState.isOverlay && modalState.isOverlayClosing) document.removeEventListener("click", handleClickDocumentEventListener);
+        if (modalState.isOverlay && modalState.isOverlayClosing) document.removeEventListener('click', handleClickDocumentEventListener);
       }; // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [modalState.isOpening, modalState.isOpened]);
     (0, _react.useImperativeHandle)(forwardedRef, () => ({
@@ -207,7 +207,7 @@
       closingDuration: modalState.closingDuration,
       padding: modalState.overlayPadding,
       background: modalState.overlayBackground
-    }, renderPanel()) : /*#__PURE__*/_react2.default.createElement(_react2.default.Fragment, null, renderPanel())) : "");
+    }, renderPanel()) : /*#__PURE__*/_react2.default.createElement(_react2.default.Fragment, null, renderPanel())) : '');
   });
   Modal.defaultProps = modalDefaultProps;
   exports.default = Modal;

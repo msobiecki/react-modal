@@ -1,8 +1,8 @@
-import React, { useReducer, useEffect, forwardRef, useImperativeHandle, useRef } from "react";
-import PropTypes from "prop-types";
-import { reducer as modalReducer, initialValues as modalInitialValues } from "./Modal.reducer";
-import { Wrapper, Overlay, Panel, Close, CloseIcon } from "./Modal.styled";
-import CLOSE_ICON from "../assets/images/Close.svg";
+import React, { useReducer, useEffect, forwardRef, useImperativeHandle, useRef } from 'react';
+import PropTypes from 'prop-types';
+import { reducer as modalReducer, initialValues as modalInitialValues } from './Modal.reducer';
+import { Wrapper, Overlay, Panel, Close, CloseIcon } from './Modal.styled';
+import CLOSE_ICON from '../assets/images/Close.svg';
 const modalPropTypes = {
   children: PropTypes.node,
   options: PropTypes.shape({
@@ -67,23 +67,23 @@ export const Modal = /*#__PURE__*/forwardRef(({
   const panelRef = useRef(null);
   const [modalState, modalDispatch] = useReducer(modalReducer, Object.assign({}, modalInitialValues, options));
 
-  const handleActionOnOpenStart = () => typeof onOpenStart === "function" && onOpenStart();
+  const handleActionOnOpenStart = () => typeof onOpenStart === 'function' && onOpenStart();
 
-  const handleActionOnOpenEnd = () => typeof onOpenEnd === "function" && onOpenEnd();
+  const handleActionOnOpenEnd = () => typeof onOpenEnd === 'function' && onOpenEnd();
 
-  const handleActionOnCloseStart = () => typeof onCloseStart === "function" && onCloseStart();
+  const handleActionOnCloseStart = () => typeof onCloseStart === 'function' && onCloseStart();
 
-  const handleActionOnCloseEnd = () => typeof onCloseEnd === "function" && onCloseEnd();
+  const handleActionOnCloseEnd = () => typeof onCloseEnd === 'function' && onCloseEnd();
 
   const openModal = () => {
     if (modalState.isClosed) modalDispatch({
-      type: "OPEN_START"
+      type: 'OPEN_START'
     });
   };
 
   const closeModal = () => {
     if (modalState.isOpened) modalDispatch({
-      type: "CLOSE_START"
+      type: 'CLOSE_START'
     });
   };
 
@@ -100,7 +100,7 @@ export const Modal = /*#__PURE__*/forwardRef(({
       handleActionOnOpenStart();
       timeout = setTimeout(() => {
         modalDispatch({
-          type: "OPEN_END"
+          type: 'OPEN_END'
         });
       }, modalState.openingDuration);
     }
@@ -119,7 +119,7 @@ export const Modal = /*#__PURE__*/forwardRef(({
       handleActionOnCloseStart();
       timeout = setTimeout(() => {
         modalDispatch({
-          type: "CLOSE_END"
+          type: 'CLOSE_END'
         });
       }, modalState.closingDuration);
     }
@@ -132,9 +132,9 @@ export const Modal = /*#__PURE__*/forwardRef(({
     if (modalState.isClosed) handleActionOnCloseEnd(); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modalState.isClosed]);
   useEffect(() => {
-    if (modalState.isOverlay && modalState.isOverlayClosing) document.addEventListener("click", handleClickDocumentEventListener);
+    if (modalState.isOverlay && modalState.isOverlayClosing) document.addEventListener('click', handleClickDocumentEventListener);
     return () => {
-      if (modalState.isOverlay && modalState.isOverlayClosing) document.removeEventListener("click", handleClickDocumentEventListener);
+      if (modalState.isOverlay && modalState.isOverlayClosing) document.removeEventListener('click', handleClickDocumentEventListener);
     }; // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modalState.isOpening, modalState.isOpened]);
   useImperativeHandle(forwardedRef, () => ({
@@ -180,7 +180,7 @@ export const Modal = /*#__PURE__*/forwardRef(({
     closingDuration: modalState.closingDuration,
     padding: modalState.overlayPadding,
     background: modalState.overlayBackground
-  }, renderPanel()) : /*#__PURE__*/React.createElement(React.Fragment, null, renderPanel())) : "");
+  }, renderPanel()) : /*#__PURE__*/React.createElement(React.Fragment, null, renderPanel())) : '');
 });
 Modal.defaultProps = modalDefaultProps;
 export default Modal;

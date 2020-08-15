@@ -21,11 +21,7 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "docs": "react-scripts build && rm -rf docs && mv build docs",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "build:lib": "yarn build:babel && yarn build:types && node ./scripts/copyTS.js",
     "build:babel": "concurrently \"yarn build:babel:esm && yarn build:babel:umd\" \"yarn build:babel:cjs\"",
     "build:babel:cjs": "cross-env BABEL_ENV=cjs babel --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist/js --presets=@babel/env",

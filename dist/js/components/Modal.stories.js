@@ -22,7 +22,7 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 var _default = {
-  title: "Modal",
+  title: 'Modal',
   component: _Modal.Modal
 };
 exports.default = _default;
@@ -52,7 +52,7 @@ var MODAL_INITIAL = function MODAL_INITIAL() {
 
 exports.MODAL_INITIAL = MODAL_INITIAL;
 MODAL_INITIAL.story = {
-  name: "[1] Initial"
+  name: '[1] Initial'
 };
 
 var MODAL_CUSTOM_DURATION = function MODAL_CUSTOM_DURATION() {
@@ -62,23 +62,23 @@ var MODAL_CUSTOM_DURATION = function MODAL_CUSTOM_DURATION() {
       closingDuration: 3000
     },
     onOpenStart: function onOpenStart() {
-      console.log("OPEN_MODAL_START");
+      console.log('OPEN_MODAL_START');
     },
     onOpenEnd: function onOpenEnd() {
-      console.log("OPEN_MODAL_END");
+      console.log('OPEN_MODAL_END');
     },
     onCloseStart: function onCloseStart() {
-      console.log("CLOSE_MODAL_START");
+      console.log('CLOSE_MODAL_START');
     },
     onCloseEnd: function onCloseEnd() {
-      console.log("CLOSE_MODAL_END");
+      console.log('CLOSE_MODAL_END');
     }
   }, /*#__PURE__*/React.createElement(ModalContent, null));
 };
 
 exports.MODAL_CUSTOM_DURATION = MODAL_CUSTOM_DURATION;
 MODAL_CUSTOM_DURATION.story = {
-  name: "[2] Custom duration"
+  name: '[2] Custom duration'
 };
 
 var MODAL_CUSTOM_Z_INDEX = function MODAL_CUSTOM_Z_INDEX() {
@@ -87,23 +87,23 @@ var MODAL_CUSTOM_Z_INDEX = function MODAL_CUSTOM_Z_INDEX() {
       zIndex: 10
     },
     onOpenStart: function onOpenStart() {
-      console.log("OPEN_MODAL_START");
+      console.log('OPEN_MODAL_START');
     },
     onOpenEnd: function onOpenEnd() {
-      console.log("OPEN_MODAL_END");
+      console.log('OPEN_MODAL_END');
     },
     onCloseStart: function onCloseStart() {
-      console.log("CLOSE_MODAL_START");
+      console.log('CLOSE_MODAL_START');
     },
     onCloseEnd: function onCloseEnd() {
-      console.log("CLOSE_MODAL_END");
+      console.log('CLOSE_MODAL_END');
     }
   }, /*#__PURE__*/React.createElement(ModalContent, null));
 };
 
 exports.MODAL_CUSTOM_Z_INDEX = MODAL_CUSTOM_Z_INDEX;
 MODAL_CUSTOM_Z_INDEX.story = {
-  name: "[3] Custom z index"
+  name: '[3] Custom z index'
 };
 
 var MODAL_WITH_OVERLAY = function MODAL_WITH_OVERLAY() {
@@ -114,50 +114,50 @@ var MODAL_WITH_OVERLAY = function MODAL_WITH_OVERLAY() {
       closingDuration: 3000
     },
     onOpenStart: function onOpenStart() {
-      console.log("OPEN_MODAL_START");
+      console.log('OPEN_MODAL_START');
     },
     onOpenEnd: function onOpenEnd() {
-      console.log("OPEN_MODAL_END");
+      console.log('OPEN_MODAL_END');
     },
     onCloseStart: function onCloseStart() {
-      console.log("CLOSE_MODAL_START");
+      console.log('CLOSE_MODAL_START');
     },
     onCloseEnd: function onCloseEnd() {
-      console.log("CLOSE_MODAL_END");
+      console.log('CLOSE_MODAL_END');
     }
   }, /*#__PURE__*/React.createElement(ModalContent, null));
 };
 
 exports.MODAL_WITH_OVERLAY = MODAL_WITH_OVERLAY;
 MODAL_WITH_OVERLAY.story = {
-  name: "[4] With overlay"
+  name: '[4] With overlay'
 };
 
 var MODAL_WITH_CUSTOM_OVERLAY = function MODAL_WITH_CUSTOM_OVERLAY() {
   return /*#__PURE__*/React.createElement(ModalWrapper, {
     options: {
       isOverlay: true,
-      overlayPadding: "20px 10px 30px 40px",
-      overlayBackground: "rgba(111, 222, 121, 0.8)"
+      overlayPadding: '20px 10px 30px 40px',
+      overlayBackground: 'rgba(111, 222, 121, 0.8)'
     },
     onOpenStart: function onOpenStart() {
-      console.log("OPEN_MODAL_START");
+      console.log('OPEN_MODAL_START');
     },
     onOpenEnd: function onOpenEnd() {
-      console.log("OPEN_MODAL_END");
+      console.log('OPEN_MODAL_END');
     },
     onCloseStart: function onCloseStart() {
-      console.log("CLOSE_MODAL_START");
+      console.log('CLOSE_MODAL_START');
     },
     onCloseEnd: function onCloseEnd() {
-      console.log("CLOSE_MODAL_END");
+      console.log('CLOSE_MODAL_END');
     }
   }, /*#__PURE__*/React.createElement(ModalContent, null));
 };
 
 exports.MODAL_WITH_CUSTOM_OVERLAY = MODAL_WITH_CUSTOM_OVERLAY;
 MODAL_WITH_CUSTOM_OVERLAY.story = {
-  name: "[5] With custom overlay"
+  name: '[5] With custom overlay'
 };
 
 var MODAL_WITH_PREVENT_CLOSE_OVERLAY = function MODAL_WITH_PREVENT_CLOSE_OVERLAY() {
@@ -167,78 +167,78 @@ var MODAL_WITH_PREVENT_CLOSE_OVERLAY = function MODAL_WITH_PREVENT_CLOSE_OVERLAY
       isOverlayClosing: false
     },
     onOpenStart: function onOpenStart() {
-      console.log("OPEN_MODAL_START");
+      console.log('OPEN_MODAL_START');
     },
     onOpenEnd: function onOpenEnd() {
-      console.log("OPEN_MODAL_END");
+      console.log('OPEN_MODAL_END');
     },
     onCloseStart: function onCloseStart() {
-      console.log("CLOSE_MODAL_START");
+      console.log('CLOSE_MODAL_START');
     },
     onCloseEnd: function onCloseEnd() {
-      console.log("CLOSE_MODAL_END");
+      console.log('CLOSE_MODAL_END');
     }
   }, /*#__PURE__*/React.createElement(ModalContent, null));
 };
 
 exports.MODAL_WITH_PREVENT_CLOSE_OVERLAY = MODAL_WITH_PREVENT_CLOSE_OVERLAY;
 MODAL_WITH_PREVENT_CLOSE_OVERLAY.story = {
-  name: "[6] With prevent close overlay"
+  name: '[6] With prevent close overlay'
 };
 
 var MODAL_WITH_CUSTOM_PANEL = function MODAL_WITH_CUSTOM_PANEL() {
   return /*#__PURE__*/React.createElement(ModalWrapper, {
     options: {
-      panelBorderRadius: "20px 30px 10px 40px",
-      panelBorder: "5px solid #332321",
-      panelBackground: "rgba(155,155,155,1)",
-      panelBoxShadow: "0 0 5px 0 rgba(0, 0, 0, .2)"
+      panelBorderRadius: '20px 30px 10px 40px',
+      panelBorder: '5px solid #332321',
+      panelBackground: 'rgba(155,155,155,1)',
+      panelBoxShadow: '0 0 5px 0 rgba(0, 0, 0, .2)'
     },
     onOpenStart: function onOpenStart() {
-      console.log("OPEN_MODAL_START");
+      console.log('OPEN_MODAL_START');
     },
     onOpenEnd: function onOpenEnd() {
-      console.log("OPEN_MODAL_END");
+      console.log('OPEN_MODAL_END');
     },
     onCloseStart: function onCloseStart() {
-      console.log("CLOSE_MODAL_START");
+      console.log('CLOSE_MODAL_START');
     },
     onCloseEnd: function onCloseEnd() {
-      console.log("CLOSE_MODAL_END");
+      console.log('CLOSE_MODAL_END');
     }
   }, /*#__PURE__*/React.createElement(ModalContent, null));
 };
 
 exports.MODAL_WITH_CUSTOM_PANEL = MODAL_WITH_CUSTOM_PANEL;
 MODAL_WITH_CUSTOM_PANEL.story = {
-  name: "[7] With custom panel"
+  name: '[7] With custom panel'
 };
 
 var MODAL_WITH_RESTRICTED_CHILDREN_WIDTH = function MODAL_WITH_RESTRICTED_CHILDREN_WIDTH() {
   return /*#__PURE__*/React.createElement(ModalWrapper, {
     onOpenStart: function onOpenStart() {
-      console.log("OPEN_MODAL_START");
+      console.log('OPEN_MODAL_START');
     },
     onOpenEnd: function onOpenEnd() {
-      console.log("OPEN_MODAL_END");
+      console.log('OPEN_MODAL_END');
     },
     onCloseStart: function onCloseStart() {
-      console.log("CLOSE_MODAL_START");
+      console.log('CLOSE_MODAL_START');
     },
     onCloseEnd: function onCloseEnd() {
-      console.log("CLOSE_MODAL_END");
+      console.log('CLOSE_MODAL_END');
     }
   }, /*#__PURE__*/React.createElement(ModalContent, null, /*#__PURE__*/React.createElement("div", {
     style: {
-      width: "100%",
-      maxWidth: "640px"
+      width: '100%',
+      maxWidth: '640px'
     }
   }, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius.")));
 };
 
 exports.MODAL_WITH_RESTRICTED_CHILDREN_WIDTH = MODAL_WITH_RESTRICTED_CHILDREN_WIDTH;
 MODAL_WITH_RESTRICTED_CHILDREN_WIDTH.story = {
-  name: "[8] With restricted children width"
+  name: '[8] With restricted children width'
 };
 
 var MODAL_WITH_OVERLAY_WITH_RESTRICTED_CHILDREN_WIDTH = function MODAL_WITH_OVERLAY_WITH_RESTRICTED_CHILDREN_WIDTH() {
@@ -247,28 +247,28 @@ var MODAL_WITH_OVERLAY_WITH_RESTRICTED_CHILDREN_WIDTH = function MODAL_WITH_OVER
       isOverlay: true
     },
     onOpenStart: function onOpenStart() {
-      console.log("OPEN_MODAL_START");
+      console.log('OPEN_MODAL_START');
     },
     onOpenEnd: function onOpenEnd() {
-      console.log("OPEN_MODAL_END");
+      console.log('OPEN_MODAL_END');
     },
     onCloseStart: function onCloseStart() {
-      console.log("CLOSE_MODAL_START");
+      console.log('CLOSE_MODAL_START');
     },
     onCloseEnd: function onCloseEnd() {
-      console.log("CLOSE_MODAL_END");
+      console.log('CLOSE_MODAL_END');
     }
   }, /*#__PURE__*/React.createElement(ModalContent, null, /*#__PURE__*/React.createElement("div", {
     style: {
-      width: "100%",
-      maxWidth: "640px"
+      width: '100%',
+      maxWidth: '640px'
     }
   }, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius.")));
 };
 
 exports.MODAL_WITH_OVERLAY_WITH_RESTRICTED_CHILDREN_WIDTH = MODAL_WITH_OVERLAY_WITH_RESTRICTED_CHILDREN_WIDTH;
 MODAL_WITH_OVERLAY_WITH_RESTRICTED_CHILDREN_WIDTH.story = {
-  name: "[9] With overlay with restricted children width"
+  name: '[9] With overlay with restricted children width'
 };
 
 var MODAL_WITH_RESTRICTED_CHILDREN_WIDTH_WITH_RESTRICTED_PANEL_SIZE = function MODAL_WITH_RESTRICTED_CHILDREN_WIDTH_WITH_RESTRICTED_PANEL_SIZE() {
@@ -277,28 +277,28 @@ var MODAL_WITH_RESTRICTED_CHILDREN_WIDTH_WITH_RESTRICTED_PANEL_SIZE = function M
       isPanelRestrictedSize: true
     },
     onOpenStart: function onOpenStart() {
-      console.log("OPEN_MODAL_START");
+      console.log('OPEN_MODAL_START');
     },
     onOpenEnd: function onOpenEnd() {
-      console.log("OPEN_MODAL_END");
+      console.log('OPEN_MODAL_END');
     },
     onCloseStart: function onCloseStart() {
-      console.log("CLOSE_MODAL_START");
+      console.log('CLOSE_MODAL_START');
     },
     onCloseEnd: function onCloseEnd() {
-      console.log("CLOSE_MODAL_END");
+      console.log('CLOSE_MODAL_END');
     }
   }, /*#__PURE__*/React.createElement(ModalContent, null, /*#__PURE__*/React.createElement("div", {
     style: {
-      width: "100%",
-      maxWidth: "640px"
+      width: '100%',
+      maxWidth: '640px'
     }
   }, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius.")));
 };
 
 exports.MODAL_WITH_RESTRICTED_CHILDREN_WIDTH_WITH_RESTRICTED_PANEL_SIZE = MODAL_WITH_RESTRICTED_CHILDREN_WIDTH_WITH_RESTRICTED_PANEL_SIZE;
 MODAL_WITH_RESTRICTED_CHILDREN_WIDTH_WITH_RESTRICTED_PANEL_SIZE.story = {
-  name: "[10] With restricted children width with restricted panel size"
+  name: '[10] With restricted children width with restricted panel size'
 };
 
 var MODAL_WITH_OVERLAY_WITH_RESTRICTED_CHILDREN_WIDTH_WITH_RESTRICTED_PANEL_SIZE = function MODAL_WITH_OVERLAY_WITH_RESTRICTED_CHILDREN_WIDTH_WITH_RESTRICTED_PANEL_SIZE() {
@@ -308,55 +308,55 @@ var MODAL_WITH_OVERLAY_WITH_RESTRICTED_CHILDREN_WIDTH_WITH_RESTRICTED_PANEL_SIZE
       isPanelRestrictedSize: true
     },
     onOpenStart: function onOpenStart() {
-      console.log("OPEN_MODAL_START");
+      console.log('OPEN_MODAL_START');
     },
     onOpenEnd: function onOpenEnd() {
-      console.log("OPEN_MODAL_END");
+      console.log('OPEN_MODAL_END');
     },
     onCloseStart: function onCloseStart() {
-      console.log("CLOSE_MODAL_START");
+      console.log('CLOSE_MODAL_START');
     },
     onCloseEnd: function onCloseEnd() {
-      console.log("CLOSE_MODAL_END");
+      console.log('CLOSE_MODAL_END');
     }
   }, /*#__PURE__*/React.createElement(ModalContent, null, /*#__PURE__*/React.createElement("div", {
     style: {
-      width: "100%",
-      maxWidth: "640px"
+      width: '100%',
+      maxWidth: '640px'
     }
   }, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius.")));
 };
 
 exports.MODAL_WITH_OVERLAY_WITH_RESTRICTED_CHILDREN_WIDTH_WITH_RESTRICTED_PANEL_SIZE = MODAL_WITH_OVERLAY_WITH_RESTRICTED_CHILDREN_WIDTH_WITH_RESTRICTED_PANEL_SIZE;
 MODAL_WITH_OVERLAY_WITH_RESTRICTED_CHILDREN_WIDTH_WITH_RESTRICTED_PANEL_SIZE.story = {
-  name: "[11] With overlay with restricted children width with restricted panel size"
+  name: '[11] With overlay with restricted children width with restricted panel size'
 };
 
 var MODAL_WITH_FULLSCREN_PANEL_WIDTH_AND_HEIGHT_WITH_RESTRICTED_PANEL_SIZE = function MODAL_WITH_FULLSCREN_PANEL_WIDTH_AND_HEIGHT_WITH_RESTRICTED_PANEL_SIZE() {
   return /*#__PURE__*/React.createElement(ModalWrapper, {
     options: {
       isPanelRestrictedSize: true,
-      panelWidth: "100%",
-      panelHeight: "100%"
+      panelWidth: '100%',
+      panelHeight: '100%'
     },
     onOpenStart: function onOpenStart() {
-      console.log("OPEN_MODAL_START");
+      console.log('OPEN_MODAL_START');
     },
     onOpenEnd: function onOpenEnd() {
-      console.log("OPEN_MODAL_END");
+      console.log('OPEN_MODAL_END');
     },
     onCloseStart: function onCloseStart() {
-      console.log("CLOSE_MODAL_START");
+      console.log('CLOSE_MODAL_START');
     },
     onCloseEnd: function onCloseEnd() {
-      console.log("CLOSE_MODAL_END");
+      console.log('CLOSE_MODAL_END');
     }
   }, /*#__PURE__*/React.createElement(ModalContent, null, /*#__PURE__*/React.createElement("div", null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius.")));
 };
 
 exports.MODAL_WITH_FULLSCREN_PANEL_WIDTH_AND_HEIGHT_WITH_RESTRICTED_PANEL_SIZE = MODAL_WITH_FULLSCREN_PANEL_WIDTH_AND_HEIGHT_WITH_RESTRICTED_PANEL_SIZE;
 MODAL_WITH_FULLSCREN_PANEL_WIDTH_AND_HEIGHT_WITH_RESTRICTED_PANEL_SIZE.story = {
-  name: "[12] With fullscreen panel width and height with restricted panel size"
+  name: '[12] With fullscreen panel width and height with restricted panel size'
 };
 
 var MODAL_WITH_OVERLAY_WITH_FULLSCREEN_PANEL_WIDTH_AND_HEIGHT_WITH_RESTRICTED_PANEL_SIZE = function MODAL_WITH_OVERLAY_WITH_FULLSCREEN_PANEL_WIDTH_AND_HEIGHT_WITH_RESTRICTED_PANEL_SIZE() {
@@ -364,27 +364,27 @@ var MODAL_WITH_OVERLAY_WITH_FULLSCREEN_PANEL_WIDTH_AND_HEIGHT_WITH_RESTRICTED_PA
     options: {
       isOverlay: true,
       isPanelRestrictedSize: true,
-      panelWidth: "100%",
-      panelHeight: "100%"
+      panelWidth: '100%',
+      panelHeight: '100%'
     },
     onOpenStart: function onOpenStart() {
-      console.log("OPEN_MODAL_START");
+      console.log('OPEN_MODAL_START');
     },
     onOpenEnd: function onOpenEnd() {
-      console.log("OPEN_MODAL_END");
+      console.log('OPEN_MODAL_END');
     },
     onCloseStart: function onCloseStart() {
-      console.log("CLOSE_MODAL_START");
+      console.log('CLOSE_MODAL_START');
     },
     onCloseEnd: function onCloseEnd() {
-      console.log("CLOSE_MODAL_END");
+      console.log('CLOSE_MODAL_END');
     }
   }, /*#__PURE__*/React.createElement(ModalContent, null, /*#__PURE__*/React.createElement("div", null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim, eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque varius eget enim at varius.")));
 };
 
 exports.MODAL_WITH_OVERLAY_WITH_FULLSCREEN_PANEL_WIDTH_AND_HEIGHT_WITH_RESTRICTED_PANEL_SIZE = MODAL_WITH_OVERLAY_WITH_FULLSCREEN_PANEL_WIDTH_AND_HEIGHT_WITH_RESTRICTED_PANEL_SIZE;
 MODAL_WITH_OVERLAY_WITH_FULLSCREEN_PANEL_WIDTH_AND_HEIGHT_WITH_RESTRICTED_PANEL_SIZE.story = {
-  name: "[13] With overlay with fullcreen panel width and height with restricted panel size"
+  name: '[13] With overlay with fullcreen panel width and height with restricted panel size'
 };
 
 var MODAL_WITHOUT_CLOSE_BUTTON = function MODAL_WITHOUT_CLOSE_BUTTON() {
@@ -393,22 +393,22 @@ var MODAL_WITHOUT_CLOSE_BUTTON = function MODAL_WITHOUT_CLOSE_BUTTON() {
       isPanelCloseButton: false
     },
     onOpenStart: function onOpenStart() {
-      console.log("OPEN_MODAL_START");
+      console.log('OPEN_MODAL_START');
     },
     onOpenEnd: function onOpenEnd() {
-      console.log("OPEN_MODAL_END");
+      console.log('OPEN_MODAL_END');
     },
     onCloseStart: function onCloseStart() {
-      console.log("CLOSE_MODAL_START");
+      console.log('CLOSE_MODAL_START');
     },
     onCloseEnd: function onCloseEnd() {
-      console.log("CLOSE_MODAL_END");
+      console.log('CLOSE_MODAL_END');
     }
   }, /*#__PURE__*/React.createElement(ModalContent, null));
 };
 
 exports.MODAL_WITHOUT_CLOSE_BUTTON = MODAL_WITHOUT_CLOSE_BUTTON;
 MODAL_WITHOUT_CLOSE_BUTTON.story = {
-  name: "[14] Without close button"
+  name: '[14] Without close button'
 };
 //# sourceMappingURL=Modal.stories.js.map

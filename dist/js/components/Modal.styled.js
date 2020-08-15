@@ -221,7 +221,7 @@ var zoomIn = {
     opacity: 0,
     transform: scale3d(0.3, 0.3, 0.3)
   },
-  "50%": {
+  '50%': {
     opacity: 1
   }
 };
@@ -229,7 +229,7 @@ var zoomOut = {
   from: {
     opacity: 1
   },
-  "50%": {
+  '50%': {
     opacity: 0,
     transform: scale3d(0.3, 0.3, 0.3)
   },
