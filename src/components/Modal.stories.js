@@ -1,5 +1,6 @@
-import React from 'react';
-import Modal from './Modal';
+import * as React from 'react';
+
+import { Modal } from './Modal';
 
 export default {
   title: 'Modal',
@@ -117,6 +118,8 @@ export const MODAL_WITH_OVERLAY = () => (
   <ModalWrapper
     options={{
       isOverlay: true,
+      openingDuration: 5000,
+      closingDuration: 3000,
     }}
     onOpenStart={() => {
       console.log('OPEN_MODAL_START');

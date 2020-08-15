@@ -14,7 +14,7 @@ import {
 
 import { Wrapper, Overlay, Panel, Close, CloseIcon } from './Modal.styled';
 
-import CLOSE_ICON from './assets/images/Close.svg';
+import CLOSE_ICON from '../assets/images/Close.svg';
 
 type InferPropType<
   PropTypes,
@@ -91,7 +91,7 @@ type ForwardedRefType = {
   closeModal: () => void;
 };
 
-const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
+export const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
   (
     { children, options, onOpenStart, onOpenEnd, onCloseStart, onCloseEnd },
     forwardedRef

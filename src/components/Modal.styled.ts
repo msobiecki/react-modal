@@ -116,29 +116,26 @@ export const Overlay = styled.div<OverlayPropsType>`
   height: 100%;
   padding: ${(props) => props.padding};
   overflow: auto;
-  opacity: 0;
   background: ${(props) => props.background};
   box-sizing: border-box;
+  // opacity: 0;
 
 
+  ${(props) => props.isVisible && css``}
     ${(props) =>
-      props.isVisible &&
+      props.isOpening &&
       css`
-        opacity: 1;
+        animation: ${(props: OverlayPropsType) => props.openingDuration}ms
+          ${fadeInAnimation};
+        animation-fill-mode: both;
       `}
-        ${(props) =>
-          props.isOpening &&
-          css`
-            animation: ${(props: OverlayPropsType) => props.openingDuration}ms
-              ${fadeInAnimation};
-          `}
-            ${(props) =>
-              props.isClosing &&
-              css`
-                animation: ${(props: OverlayPropsType) =>
-                    props.closingDuration}ms
-                  ${fadeOutAnimation};
-              `};
+      ${(props) =>
+        props.isClosing &&
+        css`
+          animation: ${(props: OverlayPropsType) => props.closingDuration}ms
+            ${fadeOutAnimation};
+          animation-fill-mode: both;
+        `};
 `;
 
 type PanelPropsType = {
@@ -170,25 +167,24 @@ export const Panel = styled.div<PanelPropsType>`
   background: ${(props) => props.background};
   box-shadow: ${(props) => props.boxShadow};
   box-sizing: border-box;
-  opacity: 0;
+  // opacity: 0;
+
+  ${(props) => props.isVisible && css``}
 
   ${(props) =>
-    props.isVisible &&
+    props.isOpening &&
     css`
-      opacity: 1;
+      animation: ${(props: PanelPropsType) => props.openingDuration}ms
+        ${zoomInAnimation};
+      animation-fill-mode: both;
     `}
       ${(props) =>
-        props.isOpening &&
+        props.isClosing &&
         css`
-          animation: ${(props: PanelPropsType) => props.openingDuration}ms
-            ${zoomInAnimation};
-        `}
-          ${(props) =>
-            props.isClosing &&
-            css`
-              animation: ${(props: PanelPropsType) => props.closingDuration}ms
-                ${zoomOutAnimation};
-            `};
+          animation: ${(props: PanelPropsType) => props.closingDuration}ms
+            ${zoomOutAnimation};
+          animation-fill-mode: both;
+        `};
 
   ${(props) =>
     props.isRestrictedSize &&
