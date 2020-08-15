@@ -54,3 +54,5 @@ import Modal from '@salimike/react-modal'
 ## Showcase
 
 ![Initial](https://i.imgur.com/jAGTYr5.gif)
+
+![With_overlay](https://i.imgur.com/58KccC0.gif)
