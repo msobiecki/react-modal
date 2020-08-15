@@ -1,4 +1,63 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+
+type CSSValue = string | number;
+
+type Keyframe = {
+  [property: string]: CSSValue;
+};
+
+type Animation = {
+  [keyframe: string]: Keyframe;
+};
+
+const fadeIn: Animation = {
+  from: {
+    opacity: 0,
+  },
+  to: {
+    opacity: 1,
+  },
+};
+
+const fadeOut: Animation = {
+  from: {
+    opacity: 1,
+  },
+  to: {
+    opacity: 0,
+  },
+};
+
+const scale3d = (a: number, b: number, c: number): string =>
+  `scale3d(${a}, ${b}, ${c})`;
+
+const zoomIn: Animation = {
+  from: {
+    opacity: 0,
+    transform: scale3d(0.3, 0.3, 0.3),
+  },
+  '50%': {
+    opacity: 1,
+  },
+};
+
+const zoomOut: Animation = {
+  from: {
+    opacity: 1,
+  },
+  '50%': {
+    opacity: 0,
+    transform: scale3d(0.3, 0.3, 0.3),
+  },
+  to: {
+    opacity: 0,
+  },
+};
+
+const fadeInAnimation = keyframes`${fadeIn}`;
+const fadeOutAnimation = keyframes`${fadeOut}`;
+const zoomInAnimation = keyframes`${zoomIn}`;
+const zoomOutAnimation = keyframes`${zoomOut}`;
 
 type WrapperPropsType = {
   isOverlay: boolean;
@@ -43,10 +102,10 @@ type OverlayPropsType = {
   isVisible: boolean;
   isOpening: boolean;
   isClosing: boolean;
-  padding: string;
-  background: string;
   openingDuration: number;
   closingDuration: number;
+  padding: string;
+  background: string;
 };
 export const Overlay = styled.div<OverlayPropsType>`
   position: relative;
@@ -67,20 +126,27 @@ export const Overlay = styled.div<OverlayPropsType>`
       css`
         opacity: 1;
       `}
-    ${(props) =>
-      props.isOpening &&
-      css`
-        transition: all ${(props: OverlayPropsType) => props.openingDuration}ms;
-      `}
-      ${(props) =>
-        props.isClosing &&
-        css`
-          transition: all
-            ${(props: OverlayPropsType) => props.closingDuration}ms;
-        `};
+        ${(props) =>
+          props.isOpening &&
+          css`
+            animation: ${(props: OverlayPropsType) => props.openingDuration}ms
+              ${fadeInAnimation};
+          `}
+            ${(props) =>
+              props.isClosing &&
+              css`
+                animation: ${(props: OverlayPropsType) =>
+                    props.closingDuration}ms
+                  ${fadeOutAnimation};
+              `};
 `;
 
 type PanelPropsType = {
+  isVisible: boolean;
+  isOpening: boolean;
+  isClosing: boolean;
+  openingDuration: number;
+  closingDuration: number;
   isRestrictedSize: boolean;
   restrictedWidth: string;
   restrictedHeight: string;
@@ -104,6 +170,25 @@ export const Panel = styled.div<PanelPropsType>`
   background: ${(props) => props.background};
   box-shadow: ${(props) => props.boxShadow};
   box-sizing: border-box;
+  opacity: 0;
+
+  ${(props) =>
+    props.isVisible &&
+    css`
+      opacity: 1;
+    `}
+      ${(props) =>
+        props.isOpening &&
+        css`
+          animation: ${(props: PanelPropsType) => props.openingDuration}ms
+            ${zoomInAnimation};
+        `}
+          ${(props) =>
+            props.isClosing &&
+            css`
+              animation: ${(props: PanelPropsType) => props.closingDuration}ms
+                ${zoomOutAnimation};
+            `};
 
   ${(props) =>
     props.isRestrictedSize &&

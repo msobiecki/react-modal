@@ -116,8 +116,7 @@ const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
     };
 
     const closeModal = () => {
-      if (modalState.isOpening || modalState.isOpened)
-        modalDispatch({ type: 'CLOSE_START' });
+      if (modalState.isOpened) modalDispatch({ type: 'CLOSE_START' });
     };
 
     const handleClickDocumentEventListener = (event: MouseEvent) => {
@@ -193,6 +192,15 @@ const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
       return (
         <Panel
           ref={panelRef}
+          isVisible={
+            modalState.isOpening || modalState.isOpened || modalState.isClosing
+              ? true
+              : false
+          }
+          isOpening={modalState.isOpening ? true : false}
+          isClosing={modalState.isClosing ? true : false}
+          openingDuration={modalState.openingDuration}
+          closingDuration={modalState.closingDuration}
           padding={modalState.panelPadding}
           isRestrictedSize={modalState.isPanelRestrictedSize}
           restrictedWidth={modalState.panelRestrictedWidth}
@@ -237,10 +245,10 @@ const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
                 }
                 isOpening={modalState.isOpening ? true : false}
                 isClosing={modalState.isClosing ? true : false}
-                padding={modalState.overlayPadding}
-                background={modalState.overlayBackground}
                 openingDuration={modalState.openingDuration}
                 closingDuration={modalState.closingDuration}
+                padding={modalState.overlayPadding}
+                background={modalState.overlayBackground}
               >
                 {renderPanel()}
               </Overlay>

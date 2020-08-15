@@ -29,8 +29,8 @@ const Playground = () => {
       <Modal
         ref={modalRef}
         options={{
-          openingDuration: 5000,
-          closingDuration: 3000,
+          openingDuration: 500,
+          closingDuration: 300,
           zIndex: 100,
           isOverlay: true,
           isOverlayClosing: true,
