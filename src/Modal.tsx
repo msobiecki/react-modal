@@ -12,14 +12,7 @@ import {
   initialValues as modalInitialValues,
 } from './Modal.reducer';
 
-import {
-  Wrapper,
-  Overlay,
-  Panel,
-  PanelInner,
-  Close,
-  CloseIcon,
-} from './Modal.styled';
+import { Wrapper, Overlay, Panel, Close, CloseIcon } from './Modal.styled';
 
 type InferPropType<
   PropTypes,
@@ -41,10 +34,16 @@ const modalPropTypes = {
     isOverlayClosing: PropTypes.bool,
     overlayPadding: PropTypes.string,
     overlayBackground: PropTypes.string,
+    isPanelRestrictedSize: PropTypes.bool,
+    panelRestrictedWidth: PropTypes.string,
+    panelRestrictedHeight: PropTypes.string,
+    panelWidth: PropTypes.string,
+    panelHeight: PropTypes.string,
     panelBorderRadius: PropTypes.string,
     panelBorder: PropTypes.string,
     panelBackground: PropTypes.string,
     panelBoxShadow: PropTypes.string,
+    panelPadding: PropTypes.string,
   }),
   onOpenStart: PropTypes.func,
   onOpenEnd: PropTypes.func,
@@ -54,17 +53,23 @@ const modalPropTypes = {
 
 const modalDefaultProps = {
   options: {
-    openingDuration: 200,
-    closingDuration: 200,
-    zIndex: 9999,
-    isOverlay: false,
-    isOverlayClosing: true,
-    overlayPadding: 'initial',
-    overlayBackground: 'rgba(0,0,0,.25)',
-    panelBorderRadius: 'initial',
-    panelBorder: 'none',
-    panelBackground: 'rgba(255,255,255,1)',
-    panelBoxShadow: 'none',
+    openingDuration: modalInitialValues.openingDuration,
+    closingDuration: modalInitialValues.closingDuration,
+    zIndex: modalInitialValues.zIndex,
+    isOverlay: modalInitialValues.isOverlay,
+    isOverlayClosing: modalInitialValues.isOverlayClosing,
+    overlayPadding: modalInitialValues.overlayPadding,
+    overlayBackground: modalInitialValues.overlayBackground,
+    isPanelRestrictedSize: modalInitialValues.isPanelRestrictedSize,
+    panelRestrictedWidth: modalInitialValues.panelRestrictedWidth,
+    panelRestrictedHeight: modalInitialValues.panelRestrictedHeight,
+    panelWidth: modalInitialValues.panelWidth,
+    panelHeight: modalInitialValues.panelHeight,
+    panelBorderRadius: modalInitialValues.panelBorderRadius,
+    panelBorder: modalInitialValues.panelBorder,
+    panelBackground: modalInitialValues.panelBackground,
+    panelBoxShadow: modalInitialValues.panelBoxShadow,
+    panelPadding: modalInitialValues.panelPadding,
   },
   onOpenStart: () => {},
   onOpenEnd: () => {},
@@ -184,6 +189,12 @@ const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
       return (
         <Panel
           ref={panelRef}
+          padding={modalState.panelPadding}
+          isRestrictedSize={modalState.isPanelRestrictedSize}
+          restrictedWidth={modalState.panelRestrictedWidth}
+          restrictedHeight={modalState.panelRestrictedHeight}
+          width={modalState.panelWidth}
+          height={modalState.panelHeight}
           borderRadius={modalState.panelBorderRadius}
           border={modalState.panelBorder}
           background={modalState.panelBackground}
@@ -192,7 +203,8 @@ const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
           {/* <Close>
       <CloseIcon></CloseIcon>
     </Close> */}
-          <PanelInner>{children}</PanelInner>
+
+          {children}
         </Panel>
       );
     };

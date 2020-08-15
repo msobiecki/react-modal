@@ -9,15 +9,22 @@ export const Wrapper = styled.div<WrapperPropsType>`
   align-items: center;
   justify-content: center;
   position: fixed;
+  max-width: 100%;
+  max-height: 100%;
   z-index: ${(props) => props.zIndex};
-  height: 100%;
+  box-sizing: border-box;
 
   ${(props) =>
     !props.isOverlay &&
     css`
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      // top: 50%;
+      // left: 50%;
+      // transform: translate(-50%, -50%);
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
       overflow: auto;
     `}
 
@@ -52,6 +59,7 @@ export const Overlay = styled.div<OverlayPropsType>`
   overflow: auto;
   opacity: 0;
   background: ${(props) => props.background};
+  box-sizing: border-box;
 
 
     ${(props) =>
@@ -73,8 +81,14 @@ export const Overlay = styled.div<OverlayPropsType>`
 `;
 
 type PanelPropsType = {
+  isRestrictedSize: boolean;
+  restrictedWidth: string;
+  restrictedHeight: string;
+  width: string;
+  height: string;
   borderRadius: string;
   border: string;
+  padding: string;
   background: string;
   boxShadow: string;
 };
@@ -82,17 +96,22 @@ export const Panel = styled.div<PanelPropsType>`
   position: relative;
   display: block;
   margin: auto;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  padding: ${(props) => props.padding};
   border-radius: ${(props) => props.borderRadius};
   border: ${(props) => props.border};
   background: ${(props) => props.background};
   box-shadow: ${(props) => props.boxShadow};
-`;
+  box-sizing: border-box;
 
-export const PanelInner = styled.div`
-  display: block;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+  ${(props) =>
+    props.isRestrictedSize &&
+    css`
+      max-width: ${(props: PanelPropsType) => props.restrictedWidth};
+      max-height: ${(props: PanelPropsType) => props.restrictedHeight};
+      overflow: auto;
+    `}
 `;
 
 export const Close = styled.div``;

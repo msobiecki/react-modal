@@ -34,7 +34,6 @@ const Playground = () => {
           zIndex: 100,
           isOverlay: true,
           isOverlayClosing: true,
-          overlayBackground: 'rgba(133,133,233,0.5)',
         }}
         onOpenStart={() => {
           console.log('OPEN_MODAL_START');

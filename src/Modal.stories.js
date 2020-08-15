@@ -50,7 +50,11 @@ function ModalWrapper({ children, ...rest }) {
   );
 }
 
-export const MODAL_INITIAL = () => <ModalWrapper />;
+export const MODAL_INITIAL = () => (
+  <ModalWrapper>
+    <ModalContent />
+  </ModalWrapper>
+);
 
 MODAL_INITIAL.story = {
   name: '[1] Initial',
@@ -338,4 +342,261 @@ export const MODAL_WITH_OVERLAY_WITH_RESTRICTED_CHILDREN_WIDTH = () => (
 
 MODAL_WITH_OVERLAY_WITH_RESTRICTED_CHILDREN_WIDTH.story = {
   name: '[9] With overlay with restricted children width',
+};
+
+export const MODAL_WITH_RESTRICTED_CHILDREN_WIDTH_WITH_RESTRICTED_PANEL_SIZE = () => (
+  <ModalWrapper
+    options={{
+      isPanelRestrictedSize: true,
+    }}
+    onOpenStart={() => {
+      console.log('OPEN_MODAL_START');
+    }}
+    onOpenEnd={() => {
+      console.log('OPEN_MODAL_END');
+    }}
+    onCloseStart={() => {
+      console.log('CLOSE_MODAL_START');
+    }}
+    onCloseEnd={() => {
+      console.log('CLOSE_MODAL_END');
+    }}
+  >
+    <ModalContent>
+      <div style={{ width: '100%', maxWidth: '640px' }}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+        pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum,
+        accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis
+        semper. Phasellus ut libero quis quam ornare tincidunt quis id diam.
+        Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci
+        ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim,
+        eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus
+        et ultrices posuere cubilia curae; Pellentesque varius eget enim at
+        varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor
+        elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris
+        lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id
+        diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci
+        ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim,
+        eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus
+        et ultrices posuere cubilia curae; Pellentesque varius eget enim at
+        varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor
+        elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris
+        lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id
+        diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci
+        ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim,
+        eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus
+        et ultrices posuere cubilia curae; Pellentesque varius eget enim at
+        varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor
+        elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris
+        lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id
+        diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci
+        ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim,
+        eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus
+        et ultrices posuere cubilia curae; Pellentesque varius eget enim at
+        varius.
+      </div>
+    </ModalContent>
+  </ModalWrapper>
+);
+
+MODAL_WITH_RESTRICTED_CHILDREN_WIDTH_WITH_RESTRICTED_PANEL_SIZE.story = {
+  name: '[10] With restricted children width with restricted panel size',
+};
+
+export const MODAL_WITH_OVERLAY_WITH_RESTRICTED_CHILDREN_WIDTH_WITH_RESTRICTED_PANEL_SIZE = () => (
+  <ModalWrapper
+    options={{
+      isOverlay: true,
+      isPanelRestrictedSize: true,
+    }}
+    onOpenStart={() => {
+      console.log('OPEN_MODAL_START');
+    }}
+    onOpenEnd={() => {
+      console.log('OPEN_MODAL_END');
+    }}
+    onCloseStart={() => {
+      console.log('CLOSE_MODAL_START');
+    }}
+    onCloseEnd={() => {
+      console.log('CLOSE_MODAL_END');
+    }}
+  >
+    <ModalContent>
+      <div style={{ width: '100%', maxWidth: '640px' }}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+        pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum,
+        accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis
+        semper. Phasellus ut libero quis quam ornare tincidunt quis id diam.
+        Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci
+        ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim,
+        eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus
+        et ultrices posuere cubilia curae; Pellentesque varius eget enim at
+        varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor
+        elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris
+        lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id
+        diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci
+        ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim,
+        eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus
+        et ultrices posuere cubilia curae; Pellentesque varius eget enim at
+        varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor
+        elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris
+        lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id
+        diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci
+        ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim,
+        eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus
+        et ultrices posuere cubilia curae; Pellentesque varius eget enim at
+        varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor
+        elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris
+        lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id
+        diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci
+        ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim,
+        eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus
+        et ultrices posuere cubilia curae; Pellentesque varius eget enim at
+        varius.
+      </div>
+    </ModalContent>
+  </ModalWrapper>
+);
+
+MODAL_WITH_OVERLAY_WITH_RESTRICTED_CHILDREN_WIDTH_WITH_RESTRICTED_PANEL_SIZE.story = {
+  name:
+    '[11] With overlay with restricted children width with restricted panel size',
+};
+
+export const MODAL_WITH_FULLSCREN_PANEL_WIDTH_AND_HEIGHT_WITH_RESTRICTED_PANEL_SIZE = () => (
+  <ModalWrapper
+    options={{
+      isPanelRestrictedSize: true,
+      panelWidth: '100%',
+      panelHeight: '100%',
+    }}
+    onOpenStart={() => {
+      console.log('OPEN_MODAL_START');
+    }}
+    onOpenEnd={() => {
+      console.log('OPEN_MODAL_END');
+    }}
+    onCloseStart={() => {
+      console.log('CLOSE_MODAL_START');
+    }}
+    onCloseEnd={() => {
+      console.log('CLOSE_MODAL_END');
+    }}
+  >
+    <ModalContent>
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+        pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum,
+        accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis
+        semper. Phasellus ut libero quis quam ornare tincidunt quis id diam.
+        Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci
+        ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim,
+        eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus
+        et ultrices posuere cubilia curae; Pellentesque varius eget enim at
+        varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor
+        elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris
+        lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id
+        diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci
+        ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim,
+        eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus
+        et ultrices posuere cubilia curae; Pellentesque varius eget enim at
+        varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor
+        elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris
+        lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id
+        diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci
+        ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim,
+        eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus
+        et ultrices posuere cubilia curae; Pellentesque varius eget enim at
+        varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor
+        elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris
+        lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id
+        diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci
+        ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim,
+        eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus
+        et ultrices posuere cubilia curae; Pellentesque varius eget enim at
+        varius.
+      </div>
+    </ModalContent>
+  </ModalWrapper>
+);
+
+MODAL_WITH_FULLSCREN_PANEL_WIDTH_AND_HEIGHT_WITH_RESTRICTED_PANEL_SIZE.story = {
+  name:
+    '[12] With fullscreen panel width and height with restricted panel size',
+};
+
+export const MODAL_WITH_OVERLAY_WITH_FULLSCREEN_PANEL_WIDTH_AND_HEIGHT_WITH_RESTRICTED_PANEL_SIZE = () => (
+  <ModalWrapper
+    options={{
+      isOverlay: true,
+      isPanelRestrictedSize: true,
+      panelWidth: '100%',
+      panelHeight: '100%',
+    }}
+    onOpenStart={() => {
+      console.log('OPEN_MODAL_START');
+    }}
+    onOpenEnd={() => {
+      console.log('OPEN_MODAL_END');
+    }}
+    onCloseStart={() => {
+      console.log('CLOSE_MODAL_START');
+    }}
+    onCloseEnd={() => {
+      console.log('CLOSE_MODAL_END');
+    }}
+  >
+    <ModalContent>
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+        pretium orci eu semper blandit. Fusce bibendum odio eu dolor elementum,
+        accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris lobortis
+        semper. Phasellus ut libero quis quam ornare tincidunt quis id diam.
+        Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci
+        ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim,
+        eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus
+        et ultrices posuere cubilia curae; Pellentesque varius eget enim at
+        varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor
+        elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris
+        lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id
+        diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci
+        ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim,
+        eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus
+        et ultrices posuere cubilia curae; Pellentesque varius eget enim at
+        varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor
+        elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris
+        lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id
+        diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci
+        ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim,
+        eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus
+        et ultrices posuere cubilia curae; Pellentesque varius eget enim at
+        varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Vestibulum pretium orci eu semper blandit. Fusce bibendum odio eu dolor
+        elementum, accumsan rhoncus mauris luctus. Sed feugiat iaculis mauris
+        lobortis semper. Phasellus ut libero quis quam ornare tincidunt quis id
+        diam. Pellentesque luctus libero ut dignissim iaculis. Quisque nec orci
+        ullamcorper, pretium quam eu, gravida ipsum. Morbi at faucibus enim,
+        eget maximus lorem. Vestibulum ante ipsum primis in faucibus orci luctus
+        et ultrices posuere cubilia curae; Pellentesque varius eget enim at
+        varius.
+      </div>
+    </ModalContent>
+  </ModalWrapper>
+);
+
+MODAL_WITH_OVERLAY_WITH_FULLSCREEN_PANEL_WIDTH_AND_HEIGHT_WITH_RESTRICTED_PANEL_SIZE.story = {
+  name:
+    '[13] With overlay with fullcreen panel width and height with restricted panel size',
 };

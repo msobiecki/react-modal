@@ -6,10 +6,16 @@ type State = {
   isOverlayClosing: boolean;
   overlayPadding: string;
   overlayBackground: string;
+  isPanelRestrictedSize: boolean;
+  panelRestrictedWidth: string;
+  panelRestrictedHeight: string;
+  panelWidth: string;
+  panelHeight: string;
   panelBorderRadius: string;
   panelBorder: string;
   panelBackground: string;
   panelBoxShadow: string;
+  panelPadding: string;
   isOpening: boolean;
   isOpened: boolean;
   isClosing: boolean;
@@ -34,12 +40,18 @@ const initialValues = {
   zIndex: 9999,
   isOverlay: false,
   isOverlayClosing: true,
-  overlayPadding: 'initial',
+  overlayPadding: '20px',
   overlayBackground: 'rgba(0,0,0,.25)',
-  panelBorderRadius: 'initial',
+  isPanelRestrictedSize: false,
+  panelRestrictedWidth: '100%',
+  panelRestrictedHeight: '100%',
+  panelWidth: 'initial',
+  panelHeight: 'initial',
+  panelBorderRadius: '25px',
   panelBorder: 'none',
   panelBackground: 'rgba(255,255,255,1)',
-  panelBoxShadow: 'none',
+  panelBoxShadow: '0 3px 6px 0 rgba(0,0,0,.15)',
+  panelPadding: '25px',
   isOpening: false,
   isOpened: false,
   isClosing: false,
