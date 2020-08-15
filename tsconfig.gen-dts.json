@@ -15,9 +15,9 @@
   },
   "include": ["./src/*", "./src/**/*"],
   "exclude": [
-    "./src/**/**.test.tsx",
-    "./src/**/**.test.ts",
-    "./src/**/**.stories.ts",
-    "./src/**/**.stories.tsx"
+    "./src/**/**.test.js",
+    "./src/**/**.test.jsx",
+    "./src/**/**.stories.js",
+    "./src/**/**.stories.jsx"
   ]
 }
