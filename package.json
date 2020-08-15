@@ -1,6 +1,6 @@
 {
   "name": "@salimike/react-modal",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -29,7 +29,7 @@
     "clean": "rimraf dist",
     "develop": "yarn build:types && yarn build:babel:esm --skip-initial-build --watch --verbose",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public -o docs"
   },
   "eslintConfig": {
     "extends": "react-app"
