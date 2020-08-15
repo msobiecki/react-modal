@@ -81,8 +81,8 @@ MODAL_CUSTOM_Z_INDEX.story = {
 export const MODAL_WITH_OVERLAY = () => /*#__PURE__*/React.createElement(ModalWrapper, {
   options: {
     isOverlay: true,
-    openingDuration: 5000,
-    closingDuration: 3000
+    openingDuration: 800,
+    closingDuration: 500
   },
   onOpenStart: () => {
     console.log('OPEN_MODAL_START');

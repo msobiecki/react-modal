@@ -110,8 +110,8 @@ var MODAL_WITH_OVERLAY = function MODAL_WITH_OVERLAY() {
   return /*#__PURE__*/React.createElement(ModalWrapper, {
     options: {
       isOverlay: true,
-      openingDuration: 5000,
-      closingDuration: 3000
+      openingDuration: 800,
+      closingDuration: 500
     },
     onOpenStart: function onOpenStart() {
       console.log('OPEN_MODAL_START');
