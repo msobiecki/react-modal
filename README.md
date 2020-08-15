@@ -51,6 +51,6 @@ import Modal from '@salimike/react-modal'
 )
 ```
 
-## Examples
+## Showcase
 
-![https://i.imgur.com/jAGTYr5.gif]
+![Initial](https://i.imgur.com/jAGTYr5.gif)
