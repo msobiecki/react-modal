@@ -14,6 +14,8 @@ import {
 
 import { Wrapper, Overlay, Panel, Close, CloseIcon } from './Modal.styled';
 
+import CLOSE_ICON from './assets/images/Close.svg';
+
 type InferPropType<
   PropTypes,
   DefaultProps = {},
@@ -200,9 +202,13 @@ const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
           background={modalState.panelBackground}
           boxShadow={modalState.panelBoxShadow}
         >
-          {/* <Close>
-      <CloseIcon></CloseIcon>
-    </Close> */}
+          <Close
+            onClick={() => {
+              closeModal();
+            }}
+          >
+            <CloseIcon src={CLOSE_ICON} />
+          </Close>
 
           {children}
         </Panel>

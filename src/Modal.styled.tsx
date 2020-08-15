@@ -114,6 +114,22 @@ export const Panel = styled.div<PanelPropsType>`
     `}
 `;
 
-export const Close = styled.div``;
+export const Close = styled.div`
+  position: absolute;
+  top: 0;
+  left: initial;
+  right: 0;
+  bottom: initial;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+`;
 
-export const CloseIcon = styled.div``;
+export const CloseIcon = styled.img`
+  display: block;
+  max-width: 100%;
+  height: auto;
+`;
