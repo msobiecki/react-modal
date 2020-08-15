@@ -600,3 +600,29 @@ MODAL_WITH_OVERLAY_WITH_FULLSCREEN_PANEL_WIDTH_AND_HEIGHT_WITH_RESTRICTED_PANEL_
   name:
     '[13] With overlay with fullcreen panel width and height with restricted panel size',
 };
+
+export const MODAL_WITHOUT_CLOSE_BUTTON = () => (
+  <ModalWrapper
+    options={{
+      isPanelCloseButton: false,
+    }}
+    onOpenStart={() => {
+      console.log('OPEN_MODAL_START');
+    }}
+    onOpenEnd={() => {
+      console.log('OPEN_MODAL_END');
+    }}
+    onCloseStart={() => {
+      console.log('CLOSE_MODAL_START');
+    }}
+    onCloseEnd={() => {
+      console.log('CLOSE_MODAL_END');
+    }}
+  >
+    <ModalContent />
+  </ModalWrapper>
+);
+
+MODAL_WITHOUT_CLOSE_BUTTON.story = {
+  name: '[14] Without close button',
+};

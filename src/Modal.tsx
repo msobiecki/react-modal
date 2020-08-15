@@ -36,6 +36,7 @@ const modalPropTypes = {
     isOverlayClosing: PropTypes.bool,
     overlayPadding: PropTypes.string,
     overlayBackground: PropTypes.string,
+    isPanelCloseButton: PropTypes.bool,
     isPanelRestrictedSize: PropTypes.bool,
     panelRestrictedWidth: PropTypes.string,
     panelRestrictedHeight: PropTypes.string,
@@ -62,6 +63,7 @@ const modalDefaultProps = {
     isOverlayClosing: modalInitialValues.isOverlayClosing,
     overlayPadding: modalInitialValues.overlayPadding,
     overlayBackground: modalInitialValues.overlayBackground,
+    isPanelCloseButton: modalInitialValues.isPanelCloseButton,
     isPanelRestrictedSize: modalInitialValues.isPanelRestrictedSize,
     panelRestrictedWidth: modalInitialValues.panelRestrictedWidth,
     panelRestrictedHeight: modalInitialValues.panelRestrictedHeight,
@@ -202,13 +204,15 @@ const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
           background={modalState.panelBackground}
           boxShadow={modalState.panelBoxShadow}
         >
-          <Close
-            onClick={() => {
-              closeModal();
-            }}
-          >
-            <CloseIcon src={CLOSE_ICON} />
-          </Close>
+          {modalState.isPanelCloseButton && (
+            <Close
+              onClick={() => {
+                closeModal();
+              }}
+            >
+              <CloseIcon src={CLOSE_ICON} />
+            </Close>
+          )}
 
           {children}
         </Panel>

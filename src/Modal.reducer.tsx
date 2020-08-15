@@ -6,6 +6,7 @@ type State = {
   isOverlayClosing: boolean;
   overlayPadding: string;
   overlayBackground: string;
+  isPanelCloseButton: boolean;
   isPanelRestrictedSize: boolean;
   panelRestrictedWidth: string;
   panelRestrictedHeight: string;
@@ -42,6 +43,7 @@ const initialValues = {
   isOverlayClosing: true,
   overlayPadding: '20px',
   overlayBackground: 'rgba(0,0,0,.25)',
+  isPanelCloseButton: true,
   isPanelRestrictedSize: false,
   panelRestrictedWidth: '100%',
   panelRestrictedHeight: '100%',
