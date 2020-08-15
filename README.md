@@ -53,21 +53,27 @@ import Modal from '@salimike/react-modal'
 
 ## Showcase
 
-Modal basic
+**Modal basic**
+
 ![Modal basic](https://i.imgur.com/jAGTYr5.gif)
 
-Modal overlay
+**Modal overlay**
+
 ![Modal overlay](https://i.imgur.com/58KccC0.gif)
 
-Modal fullscreen
+**Modal fullscreen**
+
 ![Modal fullscreen](https://i.imgur.com/ksLqccl.gif)
 
-Modal fullscreen overlay
+**Modal fullscreen overlay**
+
 ![Modal fullscreen overlay](https://i.imgur.com/n3E0Tbg.gif)
 
-Modal customized overlay
+**Modal customized overlay**
+
 ![Modal customized overlay](https://i.imgur.com/opSZAn6.gif)
 
-Modal customized panel
+**Modal customized panel**
+
 ![Modal customized panel](https://i.imgur.com/v7cAOwb.gif)
 
