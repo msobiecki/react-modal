@@ -1,3 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Renders without crashing 1`] = `<Fragment />`;
+exports[`[MODAL] [1] Initial 1`] = `<Fragment />`;
+
+exports[`[MODAL] [2] Custom duration 1`] = `<Fragment />`;
+
+exports[`[MODAL] [3] Custom z index 1`] = `<Fragment />`;
+
+exports[`[MODAL] [4] With overlay 1`] = `<Fragment />`;
+
+exports[`[MODAL] [5] With custom overlay 1`] = `<Fragment />`;
+
+exports[`[MODAL] [6] With prevent close overlay 1`] = `<Fragment />`;
+
+exports[`[MODAL] [7] With custom panel 1`] = `<Fragment />`;
+
+exports[`[MODAL] [8] With restricted children width 1`] = `<Fragment />`;
+
+exports[`[MODAL] [9] With overlay with restricted children width 1`] = `<Fragment />`;
+
+exports[`[MODAL] [10] With restricted children width with restricted panel size 1`] = `<Fragment />`;
+
+exports[`[MODAL] [11] With overlay with restricted children width with restricted panel size 1`] = `<Fragment />`;
+
+exports[`[MODAL] [12] With fullscreen panel width and height with restricted panel size 1`] = `<Fragment />`;
+
+exports[`[MODAL] [13] With overlay with fullcreen panel width and height with restricted panel size 1`] = `<Fragment />`;
+
+exports[`[MODAL] [14] Without close button 1`] = `<Fragment />`;
