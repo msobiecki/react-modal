@@ -36,6 +36,8 @@ jobs:
       - run: npm ci
       # Run test step
       - run: npm test
+        env:
+          SKIP_PREFLIGHT_CHECK: true
   publish:
     needs: test
 
