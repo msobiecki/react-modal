@@ -5,7 +5,7 @@ A beautiful, materialized and flexible React Modal component
 ### Usage
 
 ```
-import Modal from '@salimike/react-modal'
+import Modal from '@msobiecki/react-modal'
 
 () => (
   <Modal

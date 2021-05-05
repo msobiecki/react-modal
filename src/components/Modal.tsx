@@ -132,7 +132,7 @@ export const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
     };
 
     useEffect(() => {
-      let timeout: number;
+      let timeout: ReturnType<typeof setTimeout>;
       if (modalState.isOpening) {
         handleActionOnOpenStart();
         timeout = setTimeout(() => {
@@ -151,7 +151,7 @@ export const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
     }, [modalState.isOpened]);
 
     useEffect(() => {
-      let timeout: number;
+      let timeout: ReturnType<typeof setTimeout>;
       if (modalState.isClosing) {
         handleActionOnCloseStart();
         timeout = setTimeout(() => {
