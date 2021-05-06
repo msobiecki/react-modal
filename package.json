@@ -1,6 +1,6 @@
 {
   "name": "@msobiecki/react-modal",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "private": false,
   "dependencies": {
     "@types/jest": "^24.9.1",
