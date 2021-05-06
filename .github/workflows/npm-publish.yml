@@ -63,6 +63,8 @@ jobs:
 
       # Run install step 
       - run: npm ci
+      # Run clean step
+      - run: npm run clean-storybook
       # Run build docs step
       - run: npm run build-storybook
       # Run add docs to repo step
