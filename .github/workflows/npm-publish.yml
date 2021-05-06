@@ -38,6 +38,40 @@ jobs:
       - run: npm test
         env:
           SKIP_PREFLIGHT_CHECK: true
+  # This workflow contains a single job called "build docs"
+  build-docs:
+    needs: test
+
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    
+    # The type of node version that the job will run on
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Use node
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # Run install step 
+      - run: npm ci
+      # Run build docs step
+      - run: npm run build-storybook
+      # Run add docs to repo step
+      - name: Add docs to repo
+        uses: EndBug/add-and-commit@v7.2.0
+        with:
+          add: "docs"
+          message: "ci: add docs" 
+
   publish:
     needs: test
 
