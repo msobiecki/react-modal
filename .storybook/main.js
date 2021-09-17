@@ -1,23 +1,20 @@
 const path = require("path");
 
 module.exports = {
-  stories: ["../src/components/**/*.stories.(ts|tsx|js|jsx)"],
+  core: {
+    builder: "webpack5",
+  },
+  stories: ["../src/components/**/*.stories.@(ts|tsx|js|jsx)"],
   addons: [
-    "@storybook/addon-actions",
-    "@storybook/addon-links",
-    {
-      name: "@storybook/preset-create-react-app",
-      options: {
-        tsDocgenLoaderOptions: {
-          tsconfigPath: path.resolve(__dirname, "../tsconfig.json"),
-        },
-      },
-    },
+    // "@storybook/preset-create-react-app",
     {
       name: "@storybook/addon-docs",
       options: {
         configureJSX: true,
       },
     },
+    "@storybook/addon-essentials",
+    "@storybook/addon-actions",
+    "@storybook/addon-links",
   ],
 };

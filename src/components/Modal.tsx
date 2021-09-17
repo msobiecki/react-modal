@@ -1,29 +1,14 @@
-import React, {
-  useReducer,
-  useEffect,
-  forwardRef,
-  useImperativeHandle,
-  useRef,
-} from 'react';
-import PropTypes, { InferProps } from 'prop-types';
+import React, { useReducer, useEffect, forwardRef, useImperativeHandle, useRef, useCallback } from "react";
+import PropTypes, { InferProps } from "prop-types";
 
-import {
-  reducer as modalReducer,
-  initialValues as modalInitialValues,
-} from './Modal.reducer';
+import { reducer as modalReducer, initialValues as modalInitialValues } from "./Modal.reducer";
 
-import { Wrapper, Overlay, Panel, Close, CloseIcon } from './Modal.styled';
+import { Wrapper, Overlay, Panel, Close, CloseIcon } from "./Modal.styled";
 
-import CLOSE_ICON from '../assets/images/Close.svg';
+import CLOSE_ICON from "../assets/images/Close.svg";
 
-type InferPropType<
-  PropTypes,
-  DefaultProps = {},
-  Props = InferProps<PropTypes>
-> = {
-  [Key in keyof Props]: Key extends keyof DefaultProps
-    ? Props[Key] | DefaultProps[Key]
-    : Props[Key];
+type InferPropType<PropTypes, DefaultProps = {}, Props = InferProps<PropTypes>> = {
+  [Key in keyof Props]: Key extends keyof DefaultProps ? Props[Key] | DefaultProps[Key] : Props[Key];
 };
 
 const modalPropTypes = {
@@ -81,10 +66,7 @@ const modalDefaultProps = {
   onCloseEnd: () => {},
 };
 
-type ModalPropsType = InferPropType<
-  typeof modalPropTypes,
-  typeof modalDefaultProps
->;
+type ModalPropsType = InferPropType<typeof modalPropTypes, typeof modalDefaultProps>;
 
 type ForwardedRefType = {
   openModal: () => void;
@@ -92,96 +74,66 @@ type ForwardedRefType = {
 };
 
 export const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
-  (
-    { children, options, onOpenStart, onOpenEnd, onCloseStart, onCloseEnd },
-    forwardedRef
-  ) => {
+  ({ children, options, onOpenStart, onOpenEnd, onCloseStart, onCloseEnd }, forwardedRef) => {
     const panelRef = useRef<HTMLDivElement>(null);
-    const [modalState, modalDispatch] = useReducer(
-      modalReducer,
-      Object.assign({}, modalInitialValues, options)
-    );
+    const [modalState, modalDispatch] = useReducer(modalReducer, Object.assign({}, modalInitialValues, options));
 
-    const handleActionOnOpenStart = () =>
-      typeof onOpenStart === 'function' && onOpenStart();
-    const handleActionOnOpenEnd = () =>
-      typeof onOpenEnd === 'function' && onOpenEnd();
-    const handleActionOnCloseStart = () =>
-      typeof onCloseStart === 'function' && onCloseStart();
-    const handleActionOnCloseEnd = () =>
-      typeof onCloseEnd === 'function' && onCloseEnd();
+    const handleActionOnOpenStart = useCallback(() => typeof onOpenStart === "function" && onOpenStart(), [onOpenStart]);
+    const handleActionOnOpenEnd = useCallback(() => typeof onOpenEnd === "function" && onOpenEnd(), [onOpenEnd]);
+    const handleActionOnCloseStart = useCallback(() => typeof onCloseStart === "function" && onCloseStart(), [onCloseStart]);
+    const handleActionOnCloseEnd = useCallback(() => typeof onCloseEnd === "function" && onCloseEnd(), [onCloseEnd]);
 
-    const openModal = () => {
-      if (modalState.isClosed) modalDispatch({ type: 'OPEN_START' });
-    };
+    const openModal = useCallback(() => {
+      if (modalState.isClosed) modalDispatch({ type: "OPEN_START" });
+    }, [modalState.isClosed]);
 
-    const closeModal = () => {
-      if (modalState.isOpened) modalDispatch({ type: 'CLOSE_START' });
-    };
+    const closeModal = useCallback(() => {
+      if (modalState.isOpened) modalDispatch({ type: "CLOSE_START" });
+    }, [modalState.isOpened]);
 
-    const handleClickDocumentEventListener = (event: MouseEvent) => {
-      if (
-        !(
-          panelRef &&
-          panelRef.current &&
-          panelRef.current.contains(event.target as Element)
-        )
-      ) {
+    const handleClickDocumentEventListener = useCallback((event: MouseEvent) => {
+      if (!(panelRef && panelRef.current && panelRef.current.contains(event.target as Element))) {
         closeModal();
       }
-    };
+    }, [closeModal]);
 
     useEffect(() => {
       let timeout: ReturnType<typeof setTimeout>;
       if (modalState.isOpening) {
         handleActionOnOpenStart();
         timeout = setTimeout(() => {
-          modalDispatch({ type: 'OPEN_END' });
+          modalDispatch({ type: "OPEN_END" });
+          handleActionOnOpenEnd();
         }, modalState.openingDuration);
       }
       return () => {
         if (timeout) clearTimeout(timeout);
       };
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [modalState.isOpening]);
-
-    useEffect(() => {
-      if (modalState.isOpened) handleActionOnOpenEnd();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [modalState.isOpened]);
+    }, [handleActionOnOpenEnd, handleActionOnOpenStart, modalState.isOpening, modalState.openingDuration]);
 
     useEffect(() => {
       let timeout: ReturnType<typeof setTimeout>;
       if (modalState.isClosing) {
         handleActionOnCloseStart();
         timeout = setTimeout(() => {
-          modalDispatch({ type: 'CLOSE_END' });
+          modalDispatch({ type: "CLOSE_END" });
+          handleActionOnCloseEnd();
         }, modalState.closingDuration);
       }
 
       return () => {
         if (timeout) clearTimeout(timeout);
       };
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [modalState.isClosing]);
-
-    useEffect(() => {
-      if (modalState.isClosed) handleActionOnCloseEnd();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [modalState.isClosed]);
+    }, [handleActionOnCloseEnd, handleActionOnCloseStart, modalState.closingDuration, modalState.isClosing]);
 
     useEffect(() => {
       if (modalState.isOverlay && modalState.isOverlayClosing)
-        document.addEventListener('click', handleClickDocumentEventListener);
+        document.addEventListener("click", handleClickDocumentEventListener);
       return () => {
         if (modalState.isOverlay && modalState.isOverlayClosing)
-          document.removeEventListener(
-            'click',
-            handleClickDocumentEventListener
-          );
+          document.removeEventListener("click", handleClickDocumentEventListener);
       };
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [modalState.isOpening, modalState.isOpened]);
+    }, [modalState.isOpening, modalState.isOpened, modalState.isOverlay, modalState.isOverlayClosing, handleClickDocumentEventListener]);
 
     useImperativeHandle(forwardedRef, () => ({
       openModal: () => openModal(),
@@ -192,11 +144,7 @@ export const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
       return (
         <Panel
           ref={panelRef}
-          isVisible={
-            modalState.isOpening || modalState.isOpened || modalState.isClosing
-              ? true
-              : false
-          }
+          isVisible={modalState.isOpening || modalState.isOpened || modalState.isClosing ? true : false}
           isOpening={modalState.isOpening ? true : false}
           isClosing={modalState.isClosing ? true : false}
           openingDuration={modalState.openingDuration}
@@ -230,19 +178,10 @@ export const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
     return (
       <>
         {!modalState.isClosed ? (
-          <Wrapper
-            isOverlay={modalState.isOverlay ? true : false}
-            zIndex={modalState.zIndex}
-          >
+          <Wrapper isOverlay={modalState.isOverlay ? true : false} zIndex={modalState.zIndex}>
             {modalState.isOverlay ? (
               <Overlay
-                isVisible={
-                  modalState.isOpening ||
-                  modalState.isOpened ||
-                  modalState.isClosing
-                    ? true
-                    : false
-                }
+                isVisible={modalState.isOpening || modalState.isOpened || modalState.isClosing ? true : false}
                 isOpening={modalState.isOpening ? true : false}
                 isClosing={modalState.isClosing ? true : false}
                 openingDuration={modalState.openingDuration}
@@ -257,7 +196,7 @@ export const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
             )}
           </Wrapper>
         ) : (
-          ''
+          ""
         )}
       </>
     );
