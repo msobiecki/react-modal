@@ -1,6 +1,6 @@
 {
   "name": "@msobiecki/react-modal",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "private": false,
   "description": "A beautiful, materialized and flexible React Modal component",
   "keywords": [
