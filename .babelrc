@@ -1,6 +1,15 @@
 {
-  "presets": ["@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"],
-  "ignore": ["**/__snapshots__", "**/*.d.ts", "**/*.test.*", "**/*.stories.*"],
+  "presets": [
+    "@babel/preset-env", 
+    "@babel/preset-react", 
+    "@babel/preset-typescript"
+  ],
+  "ignore": [
+    "**/__snapshots__", 
+    "**/*.d.ts", 
+    "**/*.test.*", 
+    "**/*.stories.*"
+  ],
   "plugins": [
     "babel-plugin-typescript-to-proptypes",
     "@babel/plugin-proposal-export-default-from"
