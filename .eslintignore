@@ -8,3 +8,4 @@
 **/fileTransformer.js
 **/*.config.js
 **/*.stories.js
+**/docs
