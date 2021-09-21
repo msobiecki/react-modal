@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css, keyframes } from "styled-components";
 
 type CSSValue = string | number;
 
@@ -36,7 +36,7 @@ const zoomIn: Animation = {
     opacity: 0,
     transform: scale3d(0.3, 0.3, 0.3),
   },
-  '50%': {
+  "50%": {
     opacity: 1,
   },
 };
@@ -45,7 +45,7 @@ const zoomOut: Animation = {
   from: {
     opacity: 1,
   },
-  '50%': {
+  "50%": {
     opacity: 0,
     transform: scale3d(0.3, 0.3, 0.3),
   },
@@ -120,22 +120,21 @@ export const Overlay = styled.div<OverlayPropsType>`
   box-sizing: border-box;
   // opacity: 0;
 
-
   ${(props) => props.isVisible && css``}
-    ${(props) =>
-      props.isOpening &&
-      css`
-        animation: ${(props: OverlayPropsType) => props.openingDuration}ms
-          ${fadeInAnimation};
-        animation-fill-mode: both;
-      `}
+  ${(props) =>
+    props.isOpening &&
+    css`
+      animation: ${(props: OverlayPropsType) => props.openingDuration}ms
+        ${fadeInAnimation};
+      animation-fill-mode: both;
+    `}
       ${(props) =>
-        props.isClosing &&
-        css`
-          animation: ${(props: OverlayPropsType) => props.closingDuration}ms
-            ${fadeOutAnimation};
-          animation-fill-mode: both;
-        `};
+    props.isClosing &&
+    css`
+      animation: ${(props: OverlayPropsType) => props.closingDuration}ms
+        ${fadeOutAnimation};
+      animation-fill-mode: both;
+    `};
 `;
 
 type PanelPropsType = {
@@ -179,12 +178,12 @@ export const Panel = styled.div<PanelPropsType>`
       animation-fill-mode: both;
     `}
       ${(props) =>
-        props.isClosing &&
-        css`
-          animation: ${(props: PanelPropsType) => props.closingDuration}ms
-            ${zoomOutAnimation};
-          animation-fill-mode: both;
-        `};
+    props.isClosing &&
+    css`
+      animation: ${(props: PanelPropsType) => props.closingDuration}ms
+        ${zoomOutAnimation};
+      animation-fill-mode: both;
+    `};
 
   ${(props) =>
     props.isRestrictedSize &&

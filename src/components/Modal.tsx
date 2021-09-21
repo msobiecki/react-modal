@@ -1,14 +1,26 @@
-import React, { useReducer, useEffect, forwardRef, useImperativeHandle, useRef, useCallback } from "react";
+import React, {
+  useReducer,
+  useEffect,
+  forwardRef,
+  useImperativeHandle,
+  useRef,
+  useCallback,
+} from "react";
 import PropTypes, { InferProps } from "prop-types";
 
-import { reducer as modalReducer, initialValues as modalInitialValues } from "./Modal.reducer";
+import {
+  reducer as modalReducer,
+  initialValues as modalInitialValues,
+} from "./Modal.reducer";
 
 import { Wrapper, Overlay, Panel, Close, CloseIcon } from "./Modal.styled";
 
 import CLOSE_ICON from "../assets/images/Close.svg";
 
-type InferPropType<PropTypes, DefaultProps = {}, Props = InferProps<PropTypes>> = {
-  [Key in keyof Props]: Key extends keyof DefaultProps ? Props[Key] | DefaultProps[Key] : Props[Key];
+type InferPropType<PropTypes, DefaultProps, Props = InferProps<PropTypes>> = {
+  [Key in keyof Props]: Key extends keyof DefaultProps
+    ? Props[Key] | DefaultProps[Key]
+    : Props[Key];
 };
 
 const modalPropTypes = {
@@ -60,13 +72,16 @@ const modalDefaultProps = {
     panelBoxShadow: modalInitialValues.panelBoxShadow,
     panelPadding: modalInitialValues.panelPadding,
   },
-  onOpenStart: () => {},
-  onOpenEnd: () => {},
-  onCloseStart: () => {},
-  onCloseEnd: () => {},
+  onOpenStart: () => null,
+  onOpenEnd: () => null,
+  onCloseStart: () => null,
+  onCloseEnd: () => null,
 };
 
-type ModalPropsType = InferPropType<typeof modalPropTypes, typeof modalDefaultProps>;
+type ModalPropsType = InferPropType<
+  typeof modalPropTypes,
+  typeof modalDefaultProps
+>;
 
 type ForwardedRefType = {
   openModal: () => void;
@@ -74,14 +89,39 @@ type ForwardedRefType = {
 };
 
 export const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
-  ({ children, options, onOpenStart, onOpenEnd, onCloseStart, onCloseEnd }, forwardedRef) => {
+  (
+    {
+      children,
+      options,
+      onOpenStart,
+      onOpenEnd,
+      onCloseStart,
+      onCloseEnd,
+    }: ModalPropsType,
+    forwardedRef
+  ) => {
     const panelRef = useRef<HTMLDivElement>(null);
-    const [modalState, modalDispatch] = useReducer(modalReducer, Object.assign({}, modalInitialValues, options));
+    const [modalState, modalDispatch] = useReducer(
+      modalReducer,
+      Object.assign({}, modalInitialValues, options)
+    );
 
-    const handleActionOnOpenStart = useCallback(() => typeof onOpenStart === "function" && onOpenStart(), [onOpenStart]);
-    const handleActionOnOpenEnd = useCallback(() => typeof onOpenEnd === "function" && onOpenEnd(), [onOpenEnd]);
-    const handleActionOnCloseStart = useCallback(() => typeof onCloseStart === "function" && onCloseStart(), [onCloseStart]);
-    const handleActionOnCloseEnd = useCallback(() => typeof onCloseEnd === "function" && onCloseEnd(), [onCloseEnd]);
+    const handleActionOnOpenStart = useCallback(
+      () => typeof onOpenStart === "function" && onOpenStart(),
+      [onOpenStart]
+    );
+    const handleActionOnOpenEnd = useCallback(
+      () => typeof onOpenEnd === "function" && onOpenEnd(),
+      [onOpenEnd]
+    );
+    const handleActionOnCloseStart = useCallback(
+      () => typeof onCloseStart === "function" && onCloseStart(),
+      [onCloseStart]
+    );
+    const handleActionOnCloseEnd = useCallback(
+      () => typeof onCloseEnd === "function" && onCloseEnd(),
+      [onCloseEnd]
+    );
 
     const openModal = useCallback(() => {
       if (modalState.isClosed) modalDispatch({ type: "OPEN_START" });
@@ -91,11 +131,20 @@ export const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
       if (modalState.isOpened) modalDispatch({ type: "CLOSE_START" });
     }, [modalState.isOpened]);
 
-    const handleClickDocumentEventListener = useCallback((event: MouseEvent) => {
-      if (!(panelRef && panelRef.current && panelRef.current.contains(event.target as Element))) {
-        closeModal();
-      }
-    }, [closeModal]);
+    const handleClickDocumentEventListener = useCallback(
+      (event: MouseEvent) => {
+        if (
+          !(
+            panelRef &&
+            panelRef.current &&
+            panelRef.current.contains(event.target as Element)
+          )
+        ) {
+          closeModal();
+        }
+      },
+      [closeModal]
+    );
 
     useEffect(() => {
       let timeout: ReturnType<typeof setTimeout>;
@@ -109,7 +158,12 @@ export const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
       return () => {
         if (timeout) clearTimeout(timeout);
       };
-    }, [handleActionOnOpenEnd, handleActionOnOpenStart, modalState.isOpening, modalState.openingDuration]);
+    }, [
+      handleActionOnOpenEnd,
+      handleActionOnOpenStart,
+      modalState.isOpening,
+      modalState.openingDuration,
+    ]);
 
     useEffect(() => {
       let timeout: ReturnType<typeof setTimeout>;
@@ -124,16 +178,30 @@ export const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
       return () => {
         if (timeout) clearTimeout(timeout);
       };
-    }, [handleActionOnCloseEnd, handleActionOnCloseStart, modalState.closingDuration, modalState.isClosing]);
+    }, [
+      handleActionOnCloseEnd,
+      handleActionOnCloseStart,
+      modalState.closingDuration,
+      modalState.isClosing,
+    ]);
 
     useEffect(() => {
       if (modalState.isOverlay && modalState.isOverlayClosing)
         document.addEventListener("click", handleClickDocumentEventListener);
       return () => {
         if (modalState.isOverlay && modalState.isOverlayClosing)
-          document.removeEventListener("click", handleClickDocumentEventListener);
+          document.removeEventListener(
+            "click",
+            handleClickDocumentEventListener
+          );
       };
-    }, [modalState.isOpening, modalState.isOpened, modalState.isOverlay, modalState.isOverlayClosing, handleClickDocumentEventListener]);
+    }, [
+      modalState.isOpening,
+      modalState.isOpened,
+      modalState.isOverlay,
+      modalState.isOverlayClosing,
+      handleClickDocumentEventListener,
+    ]);
 
     useImperativeHandle(forwardedRef, () => ({
       openModal: () => openModal(),
@@ -144,7 +212,11 @@ export const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
       return (
         <Panel
           ref={panelRef}
-          isVisible={modalState.isOpening || modalState.isOpened || modalState.isClosing ? true : false}
+          isVisible={
+            modalState.isOpening || modalState.isOpened || modalState.isClosing
+              ? true
+              : false
+          }
           isOpening={modalState.isOpening ? true : false}
           isClosing={modalState.isClosing ? true : false}
           openingDuration={modalState.openingDuration}
@@ -178,10 +250,19 @@ export const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
     return (
       <>
         {!modalState.isClosed ? (
-          <Wrapper isOverlay={modalState.isOverlay ? true : false} zIndex={modalState.zIndex}>
+          <Wrapper
+            isOverlay={modalState.isOverlay ? true : false}
+            zIndex={modalState.zIndex}
+          >
             {modalState.isOverlay ? (
               <Overlay
-                isVisible={modalState.isOpening || modalState.isOpened || modalState.isClosing ? true : false}
+                isVisible={
+                  modalState.isOpening ||
+                  modalState.isOpened ||
+                  modalState.isClosing
+                    ? true
+                    : false
+                }
                 isOpening={modalState.isOpening ? true : false}
                 isClosing={modalState.isClosing ? true : false}
                 openingDuration={modalState.openingDuration}
@@ -202,7 +283,7 @@ export const Modal = forwardRef<ForwardedRefType, ModalPropsType>(
     );
   }
 );
-
+Modal.displayName = "Modal";
 Modal.defaultProps = modalDefaultProps;
 
 export default Modal;

@@ -1,0 +1,10 @@
+# dependencies
+**/node_modules
+
+**/dist
+
+**/.storybook
+
+**/fileTransformer.js
+**/jest.config.js
+**/*.stories.js

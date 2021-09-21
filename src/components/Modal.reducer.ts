@@ -24,10 +24,10 @@ type State = {
 };
 
 enum Type {
-  OPEN_START = 'OPEN_START',
-  OPEN_END = 'OPEN_END',
-  CLOSE_START = 'CLOSE_START',
-  CLOSE_END = 'CLOSE_END',
+  OPEN_START = "OPEN_START",
+  OPEN_END = "OPEN_END",
+  CLOSE_START = "CLOSE_START",
+  CLOSE_END = "CLOSE_END",
 }
 export type TypeKey = keyof typeof Type;
 
@@ -60,7 +60,7 @@ const initialValues = {
   isClosed: true,
 };
 
-const reducer = (state: State, action: Action) => {
+const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case Type.OPEN_START:
       return {

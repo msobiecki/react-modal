@@ -1,11 +1,13 @@
 {
-  "presets": ["@babel/react"],
+  "presets": ["@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"],
   "ignore": ["**/__snapshots__", "**/*.d.ts", "**/*.test.*", "**/*.stories.*"],
   "plugins": [
-    "@babel/plugin-transform-typescript",
     "babel-plugin-typescript-to-proptypes",
-    "@babel/plugin-proposal-export-default-from",
-    "@babel/proposal-class-properties",
-    "@babel/proposal-object-rest-spread"
-  ]
+    "@babel/plugin-proposal-export-default-from"
+  ],
+  "env": {
+    "test": {
+      "plugins": ["@babel/plugin-transform-modules-commonjs"]
+    }
+  }
 }

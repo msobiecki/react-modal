@@ -16,26 +16,25 @@
   },
   "license": "MIT",
   "author": "Michał Sobiecki <kontakt@codeshaker.pl>",
-  "main": "dist/js/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/js/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
   "scripts": {
-    "test": "react-scripts test",
-    "build:lib": "npm run build:babel && npm run build:types && node ./scripts/copyTS.js",
-    "build:babel": "concurrently \"npm run build:babel:esm && npm run build:babel:umd\" \"npm run build:babel:cjs\"",
-    "build:babel:cjs": "cross-env BABEL_ENV=cjs babel --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist/js --presets=@babel/env",
-    "build:babel:esm": "cross-env BABEL_ENV=esm babel --source-maps --extensions \".js,.ts,.tsx\" src --out-dir dist/esm",
-    "build:babel:umd": "cross-env BABEL_ENV=umd babel --source-maps --extensions \".js\" dist/esm --out-dir dist/umd --plugins=transform-es2015-modules-umd",
-    "build:types": "tsc -p tsconfig.gen-dts.json",
+    "test": "jest",
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
     "clean": "rimraf dist",
-    "develop": "npm run build:types && npm run build:babel:esm --skip-initial-build --watch --verbose",
     "storybook": "start-storybook -p 9009",
     "build-storybook": "build-storybook -o docs",
-    "clean-storybook": "rimraf docs"
+    "clean-storybook": "rimraf docs",
+    "prepare": "husky install"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --single-quote --write",
+    "**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "**/*.{json,md}": [
+      "prettier --write",
       "git add"
     ]
   },
@@ -51,64 +50,59 @@
       "last 1 safari version"
     ]
   },
-  "eslintConfig": {
-    "extends": "react-app",
-    "overrides": [
-      {
-        "files": [
-          "**/*.stories.*"
-        ],
-        "rules": {
-          "import/no-anonymous-default-export": "off"
-        }
-      }
-    ]
+  "peerDependencies": {
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "prop-types": "^15.7.2",
+    "styled-components": "^5.3.1"
   },
-  "dependencies": {
-    "@types/jest": "^27.0.1",
-    "@types/node": "^16.9.2",
+  "dependencies": {},
+  "devDependencies": {
+    "prop-types": "^15.7.2",
+    "styled-components": "^5.3.1",
+    "@babel/core": "^7.15.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.15.4",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.15.0",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "@storybook/addon-actions": "^6.3.8",
+    "@storybook/addon-docs": "^6.3.8",
+    "@storybook/addon-essentials": "^6.3.8",
+    "@storybook/addon-links": "^6.3.8",
+    "@storybook/addons": "^6.3.8",
+    "@storybook/react": "^6.3.8",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.0",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.9.6",
     "@types/prop-types": "^15.7.4",
     "@types/react": "^16.14.15",
     "@types/react-dom": "^16.9.14",
     "@types/styled-components": "^5.1.14",
-    "prop-types": "^15.7.2",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "react-scripts": "^4.0.3",
-    "styled-components": "^5.3.1",
-    "typescript": "^4.4.3"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.15.4",
-    "@babel/core": "^7.15.5",
-    "@babel/plugin-proposal-class-properties": "^7.14.5",
-    "@babel/plugin-proposal-export-default-from": "^7.14.5",
-    "@babel/plugin-transform-typescript": "^7.15.4",
-    "@commitlint/cli": "^13.1.0",
-    "@commitlint/config-conventional": "^13.1.0",
-    "@storybook/addon-actions": "^6.4.0-alpha.38",
-    "@storybook/addon-docs": "^6.4.0-alpha.38",
-    "@storybook/addon-essentials": "^6.4.0-alpha.38",
-    "@storybook/addon-links": "^6.4.0-alpha.38",
-    "@storybook/addons": "^6.4.0-alpha.38",
-    "@storybook/builder-webpack5": "^6.4.0-alpha.38",
-    "@storybook/manager-webpack5": "^6.4.0-alpha.38",
-    "@storybook/node-logger": "^6.4.0-alpha.38",
-    "@storybook/preset-create-react-app": "^3.2.0",
-    "@storybook/react": "^6.4.0-alpha.38",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.1.0",
-    "babel-loader": "8.2.2",
-    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
+    "@typescript-eslint/eslint-plugin": "^4.31.2",
+    "@typescript-eslint/parser": "^4.31.2",
+    "babel-jest": "^27.2.1",
+    "babel-loader": "^8.2.2",
     "babel-plugin-typescript-to-proptypes": "^1.4.2",
-    "concurrently": "^6.2.1",
     "cross-env": "^7.0.3",
     "eslint": "^7.32.0",
-    "husky": "^7.0.2",
+    "eslint-plugin-jest": "^24.4.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.0",
+    "husky": "^7.0.0",
     "lint-staged": "^11.1.2",
     "prettier": "^2.4.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "rimraf": "^3.0.2",
-    "webpack": "^5.53.0"
+    "rollup": "^2.56.3",
+    "rollup-plugin-svg": "^2.0.0",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "ts-jest": "^27.0.5",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.3"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
