@@ -76,9 +76,9 @@ export const Wrapper = styled.div<WrapperPropsType>`
   ${(props) =>
     !props.isOverlay &&
     css`
-      // top: 50%;
-      // left: 50%;
-      // transform: translate(-50%, -50%);
+      /* top: 50%; */
+      /* left: 50%; */
+      /* transform: translate(-50%, -50%); */
       top: 0;
       right: 0;
       bottom: 0;
@@ -118,7 +118,7 @@ export const Overlay = styled.div<OverlayPropsType>`
   overflow: auto;
   background: ${(props) => props.background};
   box-sizing: border-box;
-  // opacity: 0;
+  /* opacity: 0; */
 
   ${(props) => props.isVisible && css``}
   ${(props) =>
@@ -166,7 +166,7 @@ export const Panel = styled.div<PanelPropsType>`
   background: ${(props) => props.background};
   box-shadow: ${(props) => props.boxShadow};
   box-sizing: border-box;
-  // opacity: 0;
+  /* opacity: 0; */
 
   ${(props) => props.isVisible && css``}
 
